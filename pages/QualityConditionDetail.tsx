@@ -53,6 +53,7 @@ const QualityConditionDetail: React.FC = () => {
             activeId={id}
             title={detail.title}
             description={detail.description}
+            sections={detail.sections || []}
         >
             {Component ? <Component /> : (
                 <div className="p-8 bg-gray-50 rounded-lg border border-gray-100 flex flex-col items-center justify-center text-center">
