@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import ConditionLayout from '../components/quality-conditions/ConditionLayout';
 import { conditionDetails, conditions } from '../data/conditions';
 import Condition01_Denominacion from '../components/quality-conditions/Condition01_Denominacion';
 import Condition02_Justificacion from '../components/quality-conditions/Condition02_Justificacion';
@@ -49,19 +48,20 @@ const QualityConditionDetail: React.FC = () => {
     }
 
     return (
-        <ConditionLayout
-            activeId={id}
-            title={detail.title}
-            description={detail.description}
-            sections={detail.sections || []}
-        >
+        <div className="w-full h-full">
             {Component ? <Component /> : (
-                <div className="p-8 bg-gray-50 rounded-lg border border-gray-100 flex flex-col items-center justify-center text-center">
+                <div className="p-8 flex flex-col items-center justify-center text-center h-screen">
                     <span className="material-symbols-outlined text-6xl text-gray-300 mb-4">construction</span>
                     <h3 className="text-lg font-bold text-gray-500 mb-2">Contenido no disponible</h3>
+                    <button
+                        onClick={() => navigate('/quality-conditions')}
+                        className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
+                    >
+                        Volver
+                    </button>
                 </div>
             )}
-        </ConditionLayout>
+        </div>
     );
 };
 

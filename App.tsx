@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
+//import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Curriculum from './pages/Curriculum';
@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Enroll from './pages/Enroll';
 import QualityConditions from './pages/QualityConditions';
 import QualityConditionDetail from './pages/QualityConditionDetail';
+import Editor from './pages/Editor';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -23,7 +24,7 @@ const App: React.FC = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <ScrollToTop />
-        <Navbar />
+        {/*<Navbar />*/}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/curriculum" element={<Curriculum />} />
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/enroll" element={<Enroll />} />
           <Route path="/quality-conditions" element={<QualityConditions />} />
           <Route path="/quality-conditions/:id" element={<QualityConditionDetail />} />
+          <Route path="/editor" element={<Editor />} />
         </Routes>
         <Footer />
       </div>

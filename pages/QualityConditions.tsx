@@ -17,66 +17,70 @@ const QualityConditions: React.FC = () => {
 
         if (!mainElement || !navbar) return;
 
-        // Ensure transition is enabled
         navbar.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
 
         const handleScroll = () => {
             const scrollTop = mainElement.scrollTop;
-            const threshold = window.innerHeight * 0.1; // Hide quickly after 10% scroll
+            const threshold = window.innerHeight * 0.1;
 
             if (scrollTop > threshold) {
-                // Hide navbar
                 navbar.style.transform = 'translateY(-100%)';
             } else {
-                // Show navbar
                 navbar.style.transform = 'translateY(0)';
             }
         };
 
-        // Add event listener to the scrolling element (main)
         mainElement.addEventListener('scroll', handleScroll, { passive: true });
 
-        // Cleanup
         return () => {
             mainElement.removeEventListener('scroll', handleScroll);
-            // Ensure navbar is visible when leaving
             navbar.style.transform = '';
             navbar.style.transition = '';
         };
     }, []);
 
     return (
-        <main ref={mainRef} className="fixed inset-0 z-40 h-screen w-full overflow-y-scroll snap-y snap-mandatory light-grid-bg text-emerald-900 font-montserrat scroll-smooth">
+        <main ref={mainRef} className="fixed inset-0 z-40 h-screen w-full overflow-y-scroll snap-y snap-mandatory light-grid-bg font-montserrat scroll-smooth" style={{ color: '#00594E' }}>
+
+            {/* ── Logo top-right (fixed, always visible) ── */}
+            <div className="fixed top-4 right-6 z-50 pointer-events-none">
+                <img
+                    src="/img/logo_unitropico.png"
+                    alt="Logo Unitrópico"
+                    className="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-90"
+                />
+            </div>
 
             {/* Background elements fixed */}
             <div className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden opacity-40 z-0">
-                <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] border border-gray-300 rounded-full animate-spin-slow"></div>
-                <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-secondary/30 rounded-full animate-spin-reverse border-dashed"></div>
-                <div className="absolute top-1/2 left-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-secondary/5 to-transparent transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] rounded-full animate-spin-slow" style={{ border: '1px solid #9ABDB8' }}></div>
+                <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full animate-spin-reverse border-dashed" style={{ border: '1px dashed #C4B47F' }}></div>
+                <div className="absolute top-1/2 left-1/2 w-[1200px] h-[1200px] transform -translate-x-1/2 -translate-y-1/2"
+                    style={{ background: 'radial-gradient(circle, rgba(181,161,96,0.06) 0%, transparent 70%)' }}></div>
             </div>
 
             {/* SECTION 1: Text + Partial Orbit */}
             <section className="relative w-full h-screen snap-start flex flex-col items-center justify-start pt-32 lg:pt-40 z-10">
 
                 <div className="text-center mb-10 relative z-10 max-w-4xl mx-auto px-4">
-                    <h1 className="text-5xl md:text-7xl font-montserrat font-black mb-4 tracking-tighter text-primary drop-shadow-sm">
-                        CONDICIONES DE <span className="text-secondary-dark">CALIDAD</span>
+                    <h1 className="text-5xl md:text-7xl font-montserrat font-black mb-4 tracking-tighter drop-shadow-sm" style={{ color: '#00594E' }}>
+                        CONDICIONES DE <span style={{ color: '#B5A160' }}>CALIDAD</span>
                     </h1>
-                    <p className="text-gray-600 max-w-xl mx-auto font-medium tracking-wide text-sm border-t border-gray-200 pt-4 mt-2">
+                    <div className="mx-auto w-24 h-[3px] rounded-full mb-4" style={{ backgroundColor: '#B5A160' }}></div>
+                    <p className="max-w-xl mx-auto font-medium tracking-wide text-sm font-montserrat pt-4 mt-2" style={{ color: '#679C95', borderTop: '1px solid #CCDEDC' }}>
                         NAVEGUE EL COMPÁS ESTRATÉGICO DEL PROGRAMA DE INGENIERÍA EN INTELIGENCIA ARTIFICIAL
                     </p>
 
-                    <div className="mt-8 animate-bounce text-primary/50">
+                    <div className="mt-8 animate-bounce" style={{ color: '#9ABDB8' }}>
                         <span className="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
-                        <p className="text-[10px] tracking-widest uppercase font-bold">Descubre Más</p>
+                        <p className="text-[10px] tracking-widest uppercase font-bold font-montserrat">Descubre Más</p>
                     </div>
                 </div>
 
-                {/* Partial Orbit Preview (Cropped from bottom) */}
+                {/* Partial Orbit Preview */}
                 <div className="absolute bottom-[-400px] left-1/2 transform -translate-x-1/2 scale-75 opacity-50 pointer-events-none lg:block hidden">
-                    {/* Visual cue only, identical structure to main orbit but non-interactive */}
-                    <div className="w-[1000px] h-[1000px] border border-primary/10 rounded-full flex items-center justify-center">
-                        <div className="w-[700px] h-[700px] border border-dashed border-secondary/20 rounded-full"></div>
+                    <div className="w-[1000px] h-[1000px] rounded-full flex items-center justify-center" style={{ border: '1px solid #CCDEDC' }}>
+                        <div className="w-[700px] h-[700px] rounded-full border-dashed" style={{ border: '1px dashed #E1D9BF' }}></div>
                     </div>
                 </div>
 
@@ -86,122 +90,128 @@ const QualityConditions: React.FC = () => {
             <section className="relative w-full h-screen snap-start flex flex-col items-center justify-center z-10 overflow-hidden">
 
                 <div className="orbit-container hidden lg:block scale-[0.6] lg:scale-[0.65] xl:scale-75 2xl:scale-90 origin-center">
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-white border border-gray-100 flex flex-col items-center justify-center z-10 core-shadow transition-transform duration-500 overflow-hidden group-hover:scale-95">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 opacity-80 z-0"></div>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 z-10 pointer-events-none">
-                            <span className="material-symbols-outlined text-6xl text-primary mb-2">hub</span>
-                            <span className="text-xs text-primary font-montserrat font-bold tracking-widest">UNITRÓPICO AI</span>
-                            <div className="mt-4 w-16 h-0.5 bg-secondary"></div>
-                        </div>
-                        <div className="absolute inset-0 bg-primary flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 z-20" id="preview-panel">
-                            <h3 className="text-white font-montserrat text-xl mb-2 font-bold tracking-wider">VISUALIZAR</h3>
-                            <div className="w-8 h-1 bg-secondary mb-3"></div>
-                            <p className="text-gray-200 text-xs text-center px-6 font-medium leading-relaxed">Explore los detalles específicos de este componente del programa.</p>
+
+                    {/* Center core */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full flex flex-col items-center justify-center z-10 core-shadow overflow-hidden"
+                        style={{ backgroundColor: '#ffffff', border: '1px solid #CCDEDC' }}>
+                        <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #F0ECDF 100%)', opacity: 0.8 }}></div>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
+                            <span className="material-symbols-outlined text-6xl mb-2" style={{ color: '#00594E' }}>hub</span>
+                            <span className="text-xs font-montserrat font-black tracking-widest" style={{ color: '#00594E' }}>UNITRÓPICO AI</span>
+                            <div className="mt-4 w-16 h-0.5" style={{ backgroundColor: '#B5A160' }}></div>
                         </div>
                     </div>
 
+                    {/* Orbit ring decorations */}
+                    <div className="absolute top-1/2 left-1/2 w-[760px] h-[760px] rounded-full pointer-events-none"
+                        style={{ border: '1px solid #CCDEDC', transform: 'translate(-50%, -50%)' }}></div>
+                    <div className="absolute top-1/2 left-1/2 w-[560px] h-[560px] rounded-full pointer-events-none border-dashed"
+                        style={{ border: '1px dashed #E1D9BF', transform: 'translate(-50%, -50%)' }}></div>
+
+                    {/* ── Orbit cards — each with its own explicit pos-N class ── */}
                     <Link className="orbit-item pos-1 group w-56" to="/quality-conditions/01">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">01</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>01</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">description</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Denominación</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>description</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Denominación</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-2 group w-56" to="/quality-conditions/02">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">02</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>02</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">lightbulb</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Justificación</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>lightbulb</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Justificación</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-3 group w-56" to="/quality-conditions/03">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">03</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>03</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">school</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Curricular</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>school</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Curricular</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-4 group w-56" to="/quality-conditions/04">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">04</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>04</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">calendar_month</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Organización</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>calendar_month</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Organización</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-5 group w-56" to="/quality-conditions/05">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">05</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>05</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">biotech</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Investigación</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>biotech</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Investigación</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-6 group w-56" to="/quality-conditions/06">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">06</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>06</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">handshake</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Sector</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>handshake</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Sector</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-7 group w-56" to="/quality-conditions/07">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">07</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>07</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">groups</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Docentes</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>groups</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Docentes</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-8 group w-56" to="/quality-conditions/08">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">08</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>08</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">computer</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Medios</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>computer</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Medios</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
 
                     <Link className="orbit-item pos-9 group w-56" to="/quality-conditions/09">
-                        <div className="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-                            <div className="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md border-2 border-white">09</div>
+                        <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
+                            <div className="absolute -top-3 -left-3 text-white text-xs font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>09</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">apartment</span>
-                                <h3 className="text-xl font-montserrat font-bold text-gray-800 group-hover:text-white">Infraestructura</h3>
-                                <div className="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
+                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-[#B5A160] group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>apartment</span>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Infraestructura</h3>
+                                <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
                     </Link>
+
                 </div>
 
+                {/* Mobile grid */}
                 <div className="lg:hidden w-full px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 pb-32">
-                    {/* Mobile cards... simplified for brevity, following the pattern of the orbit items but in a grid */}
                     {[
                         { id: "01", title: "Denominación" },
                         { id: "02", title: "Justificación" },
@@ -213,15 +223,14 @@ const QualityConditions: React.FC = () => {
                         { id: "08", title: "Medios Educativos" },
                         { id: "09", title: "Infraestructura" }
                     ].map((item) => (
-                        <Link key={item.id} className="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" to={`/quality-conditions/${item.id}`}>
+                        <Link key={item.id} className="block p-6 rounded-xl transition-all duration-300" style={{ backgroundColor: '#ffffff', border: '1px solid #CCDEDC', boxShadow: '0 2px 12px rgba(0,89,78,0.08)' }} to={`/quality-conditions/${item.id}`}>
                             <div className="flex items-center gap-4">
-                                <span className="text-secondary font-montserrat font-bold text-xl">{item.id}</span>
-                                <h3 className="text-primary font-montserrat font-bold">{item.title}</h3>
+                                <span className="font-montserrat font-black text-xl" style={{ color: '#B5A160' }}>{item.id}</span>
+                                <h3 className="font-montserrat font-bold" style={{ color: '#00594E' }}>{item.title}</h3>
                             </div>
                         </Link>
                     ))}
                 </div>
-
 
             </section>
         </main>

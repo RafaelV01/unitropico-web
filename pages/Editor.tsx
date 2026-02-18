@@ -1,0 +1,383 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import EditorLayout from '../components/editor/EditorLayout';
+import ContentList from '../components/editor/ContentList';
+import PresentationContainer from '../components/editor/PresentationContainer';
+import PropertiesPanel from '../components/editor/PropertiesPanel';
+import { ProjectConfig, Hotspot } from '../types';
+
+const Editor: React.FC = () => {
+    const [projectConfig, setProjectConfig] = useState<ProjectConfig | null>(null);
+    const [selectedContentId, setSelectedContentId] = useState<string | null>(null);
+    const [selectedHotspotId, setSelectedHotspotId] = useState<string | null>(null);
+    const [selectedSequenceId, setSelectedSequenceId] = useState<string | null>(null);
+    // In-session blob URLs for preview only — not persisted to projectConfig
+    const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
+
+    // Load project config
+    useEffect(() => {
+        fetch('/project-config.json')
+            .then(res => res.json())
+            .then((data: ProjectConfig) => {
+                setProjectConfig(data);
+                // Dont auto-select
+            })
+            .catch(err => console.error('Error loading project config:', err));
+    }, []);
+
+    // When sequence changes, select its first content.
+    // NOTE: projectConfig is intentionally NOT in the deps array.
+    // Including it would reset selectedContentId on every edit (hotspot, title, etc.).
+    // This effect must only fire when the user explicitly picks a different sequence.
+    useEffect(() => {
+        if (projectConfig && selectedSequenceId) {
+            const sequence = projectConfig.sequences.find(s => s.id === selectedSequenceId);
+            if (sequence && sequence.contents.length > 0) {
+                setSelectedContentId(sequence.contents[0]);
+            } else {
+                setSelectedContentId(null);
+            }
+            setSelectedHotspotId(null);
+        }
+    }, [selectedSequenceId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const handleSelectContent = (id: string) => {
+        setSelectedContentId(id);
+        setSelectedHotspotId(null);
+    };
+
+    const handleUpdateHotspot = (updatedHotspot: Hotspot) => {
+        if (!projectConfig || !selectedContentId) return;
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const content = prev.contents[selectedContentId];
+            if (!content) return prev;
+
+            const updatedHotspots = content.hotspots.map(h =>
+                h.id === updatedHotspot.id ? updatedHotspot : h
+            );
+
+            return {
+                ...prev,
+                contents: {
+                    ...prev.contents,
+                    [selectedContentId]: {
+                        ...content,
+                        hotspots: updatedHotspots
+                    }
+                }
+            };
+        });
+    };
+
+    const handleAddHotspot = (rect: Omit<Hotspot, 'id' | 'action'>) => {
+        if (!projectConfig || !selectedContentId) return;
+
+        const newHotspot: Hotspot = {
+            id: `h-${Date.now()}`,
+            ...rect,
+            action: 'route'
+        };
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const content = prev.contents[selectedContentId];
+            if (!content) return prev;
+
+            return {
+                ...prev,
+                contents: {
+                    ...prev.contents,
+                    [selectedContentId]: {
+                        ...content,
+                        hotspots: [...content.hotspots, newHotspot]
+                    }
+                }
+            };
+        });
+
+        setSelectedHotspotId(newHotspot.id);
+    };
+
+    const handleDeleteHotspot = (hotspotId: string) => {
+        if (!projectConfig || !selectedContentId) return;
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const content = prev.contents[selectedContentId];
+            if (!content) return prev;
+
+            return {
+                ...prev,
+                contents: {
+                    ...prev.contents,
+                    [selectedContentId]: {
+                        ...content,
+                        hotspots: content.hotspots.filter(h => h.id !== hotspotId)
+                    }
+                }
+            };
+        });
+
+        setSelectedHotspotId(null);
+    };
+
+    const handleUpdateContentTitle = (contentId: string, newTitle: string) => {
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const content = prev.contents[contentId];
+            if (!content) return prev;
+            return {
+                ...prev,
+                contents: {
+                    ...prev.contents,
+                    [contentId]: { ...content, title: newTitle }
+                }
+            };
+        });
+    };
+
+    const handleUpdateContentHtml = (contentId: string, newHtml: string) => {
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const content = prev.contents[contentId];
+            if (!content) return prev;
+            return {
+                ...prev,
+                contents: {
+                    ...prev.contents,
+                    [contentId]: { ...content, html: newHtml }
+                }
+            };
+        });
+    };
+
+    const handleAddHtmlContent = () => {
+        if (!projectConfig || !selectedSequenceId) return;
+
+        const newId = `html-${Date.now()}`;
+        const newContent = {
+            id: newId,
+            title: 'Nueva Diapositiva HTML',
+            type: 'html' as const,
+            html: `
+<div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: sans-serif;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; color: #4ecca3;">Nueva Diapositiva</h1>
+    <p style="font-size: 1.2rem; opacity: 0.8;">Edita este contenido en el panel derecho.</p>
+    <div style="margin-top: 2rem; padding: 1rem; border: 1px dashed rgba(255,255,255,0.3); border-radius: 8px;">
+        Contenido interactivo básico
+    </div>
+</div>`,
+            allowScripts: true,
+            hotspots: []
+        };
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const updatedContents = { ...prev.contents, [newId]: newContent };
+            const updatedSequences = prev.sequences.map(seq => {
+                if (seq.id === selectedSequenceId) {
+                    return { ...seq, contents: [...seq.contents, newId] };
+                }
+                return seq;
+            });
+            return { ...prev, contents: updatedContents, sequences: updatedSequences };
+        });
+
+        setSelectedContentId(newId);
+    };
+
+    const handleUploadContent = (file: File) => {
+        if (!projectConfig || !selectedSequenceId) return;
+
+        const objectUrl = URL.createObjectURL(file);
+        const newContentId = `content-${Date.now()}`;
+        // Strip extension for a cleaner default title (e.g. "Titulo.PNG" → "Titulo")
+        const defaultTitle = file.name.replace(/\.[^/.]+$/, '');
+
+        const newContent = {
+            id: newContentId,
+            title: defaultTitle,
+            type: (file.type.startsWith('video') ? 'video' : 'image') as 'image' | 'video',
+            src: `/media/${file.name}`, // correct final path — title is independent
+            hotspots: [] as any[]
+        };
+
+        // Store blob URL separately for in-session preview only
+        setPreviewUrls(prev => ({ ...prev, [newContentId]: objectUrl }));
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const updatedContents = { ...prev.contents, [newContentId]: newContent };
+            const updatedSequences = prev.sequences.map(seq => {
+                if (seq.id === selectedSequenceId) {
+                    return { ...seq, contents: [...seq.contents, newContentId] };
+                }
+                return seq;
+            });
+            return { ...prev, contents: updatedContents, sequences: updatedSequences };
+        });
+
+        setSelectedContentId(newContentId);
+    };
+
+    const handleReorderContent = (fromIndex: number, toIndex: number) => {
+        if (!projectConfig || !selectedSequenceId) return;
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+            const seq = prev.sequences.find(s => s.id === selectedSequenceId);
+            if (!seq) return prev;
+
+            const newContentIds = [...seq.contents];
+            const [movedId] = newContentIds.splice(fromIndex, 1);
+            newContentIds.splice(toIndex, 0, movedId);
+
+            const updatedSequences = prev.sequences.map(s =>
+                s.id === seq.id ? { ...s, contents: newContentIds } : s
+            );
+
+            return {
+                ...prev,
+                sequences: updatedSequences
+            };
+        });
+    };
+
+    const handleSave = () => {
+        if (!projectConfig) return;
+        // src is already set to /media/filename at upload time — no blob replacement needed
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectConfig, null, 2));
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "project-config.json");
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    };
+
+    if (!projectConfig) {
+        return <div className="flex h-screen items-center justify-center">Cargando proyecto...</div>;
+    }
+
+    // Section Selector View
+    if (!selectedSequenceId) {
+        return (
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white p-8">
+                <div className="max-w-4xl mx-auto">
+                    <div className="flex items-center gap-4 mb-8">
+                        <Link to="/" className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                            <span className="material-icons">arrow_back</span>
+                        </Link>
+                        <h1 className="text-3xl font-bold">Editor MVP - Seleccionar Sección</h1>
+                    </div>
+
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        {projectConfig.sequences.map(seq => (
+                            <button
+                                key={seq.id}
+                                onClick={() => setSelectedSequenceId(seq.id)}
+                                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all text-left group border border-transparent hover:border-primary"
+                            >
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Secuencia {seq.id.replace('seq-', '')}</span>
+                                    <span className="material-icons text-gray-300 group-hover:text-primary transition-colors">edit</span>
+                                </div>
+                                <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{seq.title}</h2>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">
+                                    {seq.contents.length} contenido(s)
+                                </p>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Editor View
+
+    // Filter config passed to ContentList to ONLY show the selected sequence
+    // We create a "view" of the config that only contains the selected sequence
+    const activeSequence = projectConfig.sequences.find(s => s.id === selectedSequenceId);
+
+    // We pass the full config to properties panel but ContentList needs to only show one sequence.
+    // Actually ContentList iterates over projectConfig.sequences. 
+    // We can just create a fictitious projectConfig for ContentList or modify ContentList to accept a single sequence.
+    // Modifying ContentList props is cleaner but requires editing that file.
+    // For MVP efficiency, let's just create a filtered config for the prop.
+    const filteredConfig = {
+        ...projectConfig,
+        sequences: activeSequence ? [activeSequence] : []
+    };
+
+    const selectedContent = selectedContentId ? projectConfig.contents[selectedContentId] : null;
+    const selectedHotspot = selectedContent?.hotspots.find(h => h.id === selectedHotspotId) || null;
+
+    const header = (
+        <div className="flex items-center justify-between px-4 h-full">
+            <div className="flex items-center gap-4">
+                <button
+                    onClick={() => setSelectedSequenceId(null)}
+                    className="text-gray-500 hover:text-primary flex items-center gap-1"
+                    title="Volver a selección de sección"
+                >
+                    <span className="material-icons">arrow_back</span>
+                    <span className="text-sm font-semibold">Secciones</span>
+                </button>
+                <div className="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-2"></div>
+                <h1 className="text-lg font-bold text-gray-800 dark:text-white truncate max-w-md">
+                    {activeSequence?.title || 'Editor'}
+                </h1>
+            </div>
+            <button
+                onClick={handleSave}
+                className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded shadow transition-colors"
+                title="Genera un JSON. Recuerda mover tus archivos nuevos a /media"
+            >
+                <span className="material-icons">save_alt</span>
+                <span>Guardar / Exportar JSON</span>
+            </button>
+        </div>
+    );
+
+    return (
+        <EditorLayout
+            header={header}
+            leftPanel={
+                <ContentList
+                    projectConfig={filteredConfig}
+                    selectedContentId={selectedContentId}
+                    onSelectContent={handleSelectContent}
+                    onUploadContent={handleUploadContent}
+                    onAddHtmlContent={handleAddHtmlContent}
+                    onReorderContent={handleReorderContent}
+                />
+            }
+            centerPanel={
+                <PresentationContainer
+                    content={selectedContent}
+                    previewUrl={selectedContentId ? previewUrls[selectedContentId] : undefined}
+                    selectedHotspotId={selectedHotspotId}
+                    onSelectHotspot={setSelectedHotspotId}
+                    onAddHotspot={handleAddHotspot}
+                    onNavigate={handleSelectContent}
+                />
+            }
+            rightPanel={
+                <PropertiesPanel
+                    selectedHotspot={selectedHotspot}
+                    selectedContent={selectedContent}
+                    projectConfig={projectConfig}
+                    onUpdateHotspot={handleUpdateHotspot}
+                    onDeleteHotspot={handleDeleteHotspot}
+                    onUpdateContentTitle={handleUpdateContentTitle}
+                    onUpdateContentHtml={handleUpdateContentHtml}
+                />
+            }
+        />
+    );
+};
+
+export default Editor;
