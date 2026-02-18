@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Condiciones del Programa - Ingeniería en IA - Compass Light Mode</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Orbitron:wght@400;500;700;900&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style type="text/tailwindcss">
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Condiciones del Programa - Ingeniería en IA - Compass Light Mode</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Orbitron:wght@400;500;700;900&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
         :root {
             --primary: #004d40;
             --primary-dark: #00251a;
@@ -79,238 +85,326 @@
             animation: spin-reverse 60s linear infinite;
         }
     </style>
-<script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#004d40", 
-              "primary-light": "#00695c",
-              secondary: "#bfa15f",
-              "secondary-dark": "#8f763f",
-              "background-light": "#fcfcfc",
-              "surface-white": "#ffffff",
-              "emerald-dark": "#003d33",
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#004d40",
+                        "primary-light": "#00695c",
+                        secondary: "#bfa15f",
+                        "secondary-dark": "#8f763f",
+                        "background-light": "#fcfcfc",
+                        "surface-white": "#ffffff",
+                        "emerald-dark": "#003d33",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        body: ["Montserrat", "sans-serif"],
+                    },
+                },
             },
-            fontFamily: {
-              display: ["Orbitron", "sans-serif"], 
-              body: ["Montserrat", "sans-serif"],
-            },
-          },
-        },
-      };
+        };
     </script>
 </head>
-<body class="light-grid-bg text-emerald-900 font-body min-h-screen overflow-x-hidden selection:bg-primary/10 selection:text-primary">
-<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm px-6 py-4 flex justify-between items-center transition-all duration-300">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-4xl">change_history</span>
-<div class="flex flex-col">
-<span class="text-2xl font-display font-bold text-primary tracking-widest uppercase">Unitrópico</span>
-<span class="text-[10px] text-secondary-dark tracking-[0.2em] uppercase font-bold">Ingeniería en IA</span>
-</div>
-</div>
-<div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide">
-<a class="text-gray-500 hover:text-primary transition-colors" href="#">Inicio</a>
-<a class="text-primary font-extrabold border-b-2 border-secondary" href="#">Programa</a>
-<a class="text-gray-500 hover:text-primary transition-colors" href="#">Admisiones</a>
-<button class="bg-primary text-white border border-transparent px-6 py-2 rounded-sm hover:bg-white hover:text-primary hover:border-primary transition-all duration-300 shadow-md hover:shadow-lg">
+
+<body
+    class="light-grid-bg text-emerald-900 font-body min-h-screen overflow-x-hidden selection:bg-primary/10 selection:text-primary">
+    <nav
+        class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm px-6 py-4 flex justify-between items-center transition-all duration-300">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-4xl">change_history</span>
+            <div class="flex flex-col">
+                <span class="text-2xl font-display font-bold text-primary tracking-widest uppercase">Unitrópico</span>
+                <span class="text-[10px] text-secondary-dark tracking-[0.2em] uppercase font-bold">Ingeniería en
+                    IA</span>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide">
+            <a class="text-gray-500 hover:text-primary transition-colors" href="#">Inicio</a>
+            <a class="text-primary font-extrabold border-b-2 border-secondary" href="#">Programa</a>
+            <a class="text-gray-500 hover:text-primary transition-colors" href="#">Admisiones</a>
+            <button
+                class="bg-primary text-white border border-transparent px-6 py-2 rounded-sm hover:bg-white hover:text-primary hover:border-primary transition-all duration-300 shadow-md hover:shadow-lg">
                 Portal Estudiante
             </button>
-</div>
-</nav>
-<main class="relative w-full min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-40">
-<div class="absolute top-1/2 left-1/2 w-[800px] h-[800px] border border-gray-300 rounded-full animate-spin-slow"></div>
-<div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-secondary/30 rounded-full animate-spin-reverse border-dashed"></div>
-<div class="absolute top-1/2 left-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-secondary/5 to-transparent transform -translate-x-1/2 -translate-y-1/2"></div>
-</div>
-<div class="text-center mb-10 relative z-10 max-w-4xl mx-auto px-4 mt-8">
-<h1 class="text-5xl md:text-7xl font-display font-black mb-4 tracking-tighter text-primary drop-shadow-sm">
+        </div>
+    </nav>
+    <main class="relative w-full min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-40">
+            <div
+                class="absolute top-1/2 left-1/2 w-[800px] h-[800px] border border-gray-300 rounded-full animate-spin-slow">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-secondary/30 rounded-full animate-spin-reverse border-dashed">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-secondary/5 to-transparent transform -translate-x-1/2 -translate-y-1/2">
+            </div>
+        </div>
+        <div class="text-center mb-10 relative z-10 max-w-4xl mx-auto px-4 mt-8">
+            <h1 class="text-5xl md:text-7xl font-display font-black mb-4 tracking-tighter text-primary drop-shadow-sm">
                 CONDICIONES DE <span class="text-secondary-dark">CALIDAD</span>
-</h1>
-<p class="text-gray-600 max-w-xl mx-auto font-medium tracking-wide text-sm border-t border-gray-200 pt-4 mt-2">
+            </h1>
+            <p
+                class="text-gray-600 max-w-xl mx-auto font-medium tracking-wide text-sm border-t border-gray-200 pt-4 mt-2">
                 NAVEGUE EL COMPÁS ESTRATÉGICO DEL PROGRAMA DE INGENIERÍA EN INTELIGENCIA ARTIFICIAL
             </p>
-</div>
-<div class="orbit-container hidden lg:block">
-<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-white border border-gray-100 flex flex-col items-center justify-center z-10 core-shadow transition-transform duration-500 overflow-hidden group-hover:scale-95">
-<div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 opacity-80 z-0"></div>
-<div class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 z-10 pointer-events-none">
-<span class="material-symbols-outlined text-6xl text-primary mb-2">hub</span>
-<span class="text-xs text-primary font-display font-bold tracking-widest">UNITRÓPICO AI</span>
-<div class="mt-4 w-16 h-0.5 bg-secondary"></div>
-</div>
-<div class="absolute inset-0 bg-primary flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 z-20" id="preview-panel">
-<h3 class="text-white font-display text-xl mb-2 font-bold tracking-wider">VISUALIZAR</h3>
-<div class="w-8 h-1 bg-secondary mb-3"></div>
-<p class="text-gray-200 text-xs text-center px-6 font-medium leading-relaxed">Explore los detalles específicos de este componente del programa.</p>
-</div>
-</div>
-<a class="orbit-item pos-1 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">01</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">description</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Denominación</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-2 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">02</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">lightbulb</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Justificación</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-3 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">03</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">school</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Curricular</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-4 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">04</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">calendar_month</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Organización</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-5 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">05</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">biotech</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Investigación</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-6 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">06</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">handshake</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Sector</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-7 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">07</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">groups</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Docentes</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-8 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">08</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">computer</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Medios</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-<a class="orbit-item pos-9 group w-56" href="#">
-<div class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
-<div class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">09</div>
-<div class="flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">apartment</span>
-<h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Infraestructura</h3>
-<div class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2"></div>
-</div>
-</div>
-</a>
-</div>
-<div class="lg:hidden w-full px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">01</span>
-<h3 class="text-primary font-display font-bold">Denominación</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">02</span>
-<h3 class="text-primary font-display font-bold">Justificación</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">03</span>
-<h3 class="text-primary font-display font-bold">Aspectos Curriculares</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">04</span>
-<h3 class="text-primary font-display font-bold">Organización</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">05</span>
-<h3 class="text-primary font-display font-bold">Investigación</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">06</span>
-<h3 class="text-primary font-display font-bold">Relación Sector</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">07</span>
-<h3 class="text-primary font-display font-bold">Personal Docente</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">08</span>
-<h3 class="text-primary font-display font-bold">Medios Educativos</h3>
-</div>
-</a>
-<a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300" href="#">
-<div class="flex items-center gap-4">
-<span class="text-secondary font-display font-bold text-xl">09</span>
-<h3 class="text-primary font-display font-bold">Infraestructura</h3>
-</div>
-</a>
-</div>
-<div class="mt-16 text-center z-10">
-<button class="inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-display font-bold tracking-widest text-sm uppercase rounded-none hover:bg-emerald-800 hover:text-white transition-all duration-300 shadow-lg border-2 border-transparent hover:border-secondary group">
-<span class="material-symbols-outlined mr-3 group-hover:translate-y-1 transition-transform">download</span>
+        </div>
+        <div class="orbit-container hidden lg:block">
+            <div
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-white border border-gray-100 flex flex-col items-center justify-center z-10 core-shadow transition-transform duration-500 overflow-hidden group-hover:scale-95">
+                <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 opacity-80 z-0"></div>
+                <div
+                    class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 z-10 pointer-events-none">
+                    <span class="material-symbols-outlined text-6xl text-primary mb-2">hub</span>
+                    <span class="text-xs text-primary font-display font-bold tracking-widest">UNITRÓPICO AI</span>
+                    <div class="mt-4 w-16 h-0.5 bg-secondary"></div>
+                </div>
+                <div class="absolute inset-0 bg-primary flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 z-20"
+                    id="preview-panel">
+                    <h3 class="text-white font-display text-xl mb-2 font-bold tracking-wider">VISUALIZAR</h3>
+                    <div class="w-8 h-1 bg-secondary mb-3"></div>
+                    <p class="text-gray-200 text-xs text-center px-6 font-medium leading-relaxed">Explore los detalles
+                        específicos de este componente del programa.</p>
+                </div>
+            </div>
+            <a class="orbit-item pos-1 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        01</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">description</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Denominación
+                        </h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-2 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        02</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">lightbulb</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Justificación
+                        </h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-3 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        03</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">school</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Curricular</h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-4 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        04</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">calendar_month</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Organización
+                        </h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-5 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        05</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">biotech</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Investigación
+                        </h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-6 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        06</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">handshake</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Sector</h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-7 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        07</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">groups</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Docentes</h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-8 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        08</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">computer</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Medios</h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="orbit-item pos-9 group w-56" href="#">
+                <div
+                    class="relative bg-white border border-gray-200 p-6 rounded-lg hover:border-secondary hover:bg-primary hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1">
+                    <div
+                        class="absolute -top-3 -left-3 bg-secondary text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full font-display z-20 shadow-md border-2 border-white">
+                        09</div>
+                    <div class="flex flex-col items-center text-center">
+                        <span
+                            class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:text-secondary group-hover:scale-110 transition-transform">apartment</span>
+                        <h3 class="text-sm font-display font-bold text-gray-800 group-hover:text-white">Infraestructura
+                        </h3>
+                        <div
+                            class="h-0.5 w-8 group-hover:w-full bg-gray-200 group-hover:bg-secondary transition-all duration-500 mt-2">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="lg:hidden w-full px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">01</span>
+                    <h3 class="text-primary font-display font-bold">Denominación</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">02</span>
+                    <h3 class="text-primary font-display font-bold">Justificación</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">03</span>
+                    <h3 class="text-primary font-display font-bold">Aspectos Curriculares</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">04</span>
+                    <h3 class="text-primary font-display font-bold">Organización</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">05</span>
+                    <h3 class="text-primary font-display font-bold">Investigación</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">06</span>
+                    <h3 class="text-primary font-display font-bold">Relación Sector</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">07</span>
+                    <h3 class="text-primary font-display font-bold">Personal Docente</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">08</span>
+                    <h3 class="text-primary font-display font-bold">Medios Educativos</h3>
+                </div>
+            </a>
+            <a class="block bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
+                href="#">
+                <div class="flex items-center gap-4">
+                    <span class="text-secondary font-display font-bold text-xl">09</span>
+                    <h3 class="text-primary font-display font-bold">Infraestructura</h3>
+                </div>
+            </a>
+        </div>
+        <div class="mt-16 text-center z-10">
+            <button
+                class="inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-display font-bold tracking-widest text-sm uppercase rounded-none hover:bg-emerald-800 hover:text-white transition-all duration-300 shadow-lg border-2 border-transparent hover:border-secondary group">
+                <span
+                    class="material-symbols-outlined mr-3 group-hover:translate-y-1 transition-transform">download</span>
                 Descargar Documento Maestro
             </button>
-</div>
-</main>
-<footer class="bg-gray-100 border-t border-gray-200 text-gray-600 py-12">
-<div class="container mx-auto px-6">
-<div class="flex flex-col md:flex-row justify-between items-center opacity-80 text-xs tracking-wider">
-<p>© 2026 Unitrópico. Facultad de Ingenierías.</p>
-<div class="flex space-x-6 mt-4 md:mt-0 font-medium">
-<a class="hover:text-primary transition-colors" href="#">Política de Privacidad</a>
-<a class="hover:text-primary transition-colors" href="#">Términos de Uso</a>
-</div>
-</div>
-</div>
-</footer>
+        </div>
+    </main>
+    <footer class="bg-gray-100 border-t border-gray-200 text-gray-600 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center opacity-80 text-xs tracking-wider">
+                <p>© 2026 Unitrópico. Facultad de Ingenierías.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 font-medium">
+                    <a class="hover:text-primary transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-primary transition-colors" href="#">Términos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-</body></html>
+</body>
+
+</html>
