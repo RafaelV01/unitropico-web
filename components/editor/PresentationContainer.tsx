@@ -131,10 +131,33 @@ const PresentationContainer: React.FC<PresentationContainerProps> = ({
                 ) : content.type === 'html' ? (
                     <iframe
                         srcDoc={content.html}
-                        sandbox="allow-scripts allow-same-origin"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation"
                         className="w-full h-full border-none"
                         title={content.title}
                     />
+                ) : content.type === 'pdf' ? (
+                    <div className="w-full h-full bg-gray-100 rounded-lg overflow-hidden flex flex-col">
+                        <div className="bg-white/80 backdrop-blur-md p-3 border-b border-gray-200 flex items-center justify-between shrink-0">
+                            <div className="flex items-center gap-2">
+                                <span className="material-icons text-red-600">picture_as_pdf</span>
+                                <span className="text-sm font-bold text-gray-700 truncate">{content.title}</span>
+                            </div>
+                            <a
+                                href={previewUrl || encodeURI(content.src || '')}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs font-bold text-primary hover:underline flex items-center gap-1 shrink-0"
+                            >
+                                <span className="material-icons text-xs">open_in_new</span>
+                                Ampliar
+                            </a>
+                        </div>
+                        <iframe
+                            src={`${previewUrl || encodeURI(content.src || '')}#toolbar=1`}
+                            className="w-full h-full border-none"
+                            title={content.title}
+                        />
+                    </div>
                 ) : (
                     <img
                         src={previewUrl || content.src}

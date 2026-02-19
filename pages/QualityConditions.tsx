@@ -51,12 +51,25 @@ const QualityConditions: React.FC = () => {
                 />
             </div>
 
-            {/* Background elements fixed */}
-            <div className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden opacity-40 z-0">
-                <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] rounded-full animate-spin-slow" style={{ border: '1px solid #9ABDB8' }}></div>
-                <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full animate-spin-reverse border-dashed" style={{ border: '1px dashed #C4B47F' }}></div>
-                <div className="absolute top-1/2 left-1/2 w-[1200px] h-[1200px] transform -translate-x-1/2 -translate-y-1/2"
-                    style={{ background: 'radial-gradient(circle, rgba(181,161,96,0.06) 0%, transparent 70%)' }}></div>
+            {/* ── Persisten Background Image ── */}
+            <div className="fixed inset-0 z-0 bg-white">
+                <img
+                    src="/img/background-1.jpg"
+                    alt="AI Pattern Background"
+                    className="w-full h-full object-cover opacity-40 mix-blend-multiply"
+                />
+
+                {/* Institutional Glows */}
+                <div className="absolute inset-0 opacity-40"
+                    style={{ background: 'radial-gradient(circle at 15% 15%, rgba(181, 161, 96, 0.2) 0%, transparent 50%)' }}></div>
+                <div className="absolute inset-0 opacity-30"
+                    style={{ background: 'radial-gradient(circle at 85% 85%, rgba(0, 89, 78, 0.15) 0%, transparent 50%)' }}></div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-1/2 left-1/2 w-[1100px] h-[1100px] rounded-full animate-spin-slow pointer-events-none opacity-20"
+                    style={{ border: 'none', transform: 'translate(-50%, -50%)' }}></div>
+                <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] rounded-full animate-spin-reverse border-dashed pointer-events-none opacity-20"
+                    style={{ border: 'none', transform: 'translate(-50%, -50%)' }}></div>
             </div>
 
             {/* SECTION 1: Text + Partial Orbit */}
@@ -79,8 +92,8 @@ const QualityConditions: React.FC = () => {
 
                 {/* Partial Orbit Preview */}
                 <div className="absolute bottom-[-400px] left-1/2 transform -translate-x-1/2 scale-75 opacity-50 pointer-events-none lg:block hidden">
-                    <div className="w-[1000px] h-[1000px] rounded-full flex items-center justify-center" style={{ border: '1px solid #CCDEDC' }}>
-                        <div className="w-[700px] h-[700px] rounded-full border-dashed" style={{ border: '1px dashed #E1D9BF' }}></div>
+                    <div className="w-[1000px] h-[1000px] rounded-full flex items-center justify-center" style={{ border: 'none' }}>
+                        <div className="w-[700px] h-[700px] rounded-full border-dashed" style={{ border: 'none' }}></div>
                     </div>
                 </div>
 
@@ -104,9 +117,9 @@ const QualityConditions: React.FC = () => {
 
                     {/* Orbit ring decorations */}
                     <div className="absolute top-1/2 left-1/2 w-[760px] h-[760px] rounded-full pointer-events-none"
-                        style={{ border: '1px solid #CCDEDC', transform: 'translate(-50%, -50%)' }}></div>
+                        style={{ border: 'none', transform: 'translate(-50%, -50%)' }}></div>
                     <div className="absolute top-1/2 left-1/2 w-[560px] h-[560px] rounded-full pointer-events-none border-dashed"
-                        style={{ border: '1px dashed #E1D9BF', transform: 'translate(-50%, -50%)' }}></div>
+                        style={{ border: 'none', transform: 'translate(-50%, -50%)' }}></div>
 
                     {/* ── Orbit cards — each with its own explicit pos-N class ── */}
                     <Link className="orbit-item pos-1 group w-56" to="/quality-conditions/01">

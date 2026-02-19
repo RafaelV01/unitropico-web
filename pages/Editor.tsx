@@ -199,8 +199,10 @@ const Editor: React.FC = () => {
         const newContent = {
             id: newContentId,
             title: defaultTitle,
-            type: (file.type.startsWith('video') ? 'video' : 'image') as 'image' | 'video',
-            src: `/media/${file.name}`, // correct final path — title is independent
+            type: (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')
+                ? 'pdf'
+                : file.type.startsWith('video') ? 'video' : 'image') as any,
+            src: `/media/${file.name}`,
             hotspots: [] as any[]
         };
 
@@ -245,16 +247,78 @@ const Editor: React.FC = () => {
         });
     };
 
-    const handleSave = () => {
+    const handleDeleteContent = (contentId: string) => {
         if (!projectConfig) return;
-        // src is already set to /media/filename at upload time — no blob replacement needed
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectConfig, null, 2));
-        const downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "project-config.json");
-        document.body.appendChild(downloadAnchorNode);
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
+
+        if (!window.confirm('¿Estás seguro de que deseas eliminar este contenido?')) return;
+
+        setProjectConfig(prev => {
+            if (!prev) return null;
+
+            // 1. Remove from all sequences
+            const updatedSequences = prev.sequences.map(seq => ({
+                ...seq,
+                contents: seq.contents.filter(id => id !== contentId)
+            }));
+
+            // 2. Remove from global contents map
+            const { [contentId]: _, ...remainingContents } = prev.contents;
+
+            return {
+                ...prev,
+                sequences: updatedSequences,
+                contents: remainingContents
+            };
+        });
+
+        // Clear selection if deleted item was selected
+        if (selectedContentId === contentId) {
+            setSelectedContentId(null);
+            setSelectedHotspotId(null);
+        }
+    };
+
+    const [isSaving, setIsSaving] = useState(false);
+    const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    const handleSave = async () => {
+        if (!projectConfig) return;
+
+        setIsSaving(true);
+        setSaveStatus('idle');
+
+        try {
+            const response = await fetch('http://localhost:3001/api/save-config', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(projectConfig),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setSaveStatus('success');
+                setTimeout(() => setSaveStatus('idle'), 3000);
+            } else {
+                throw new Error(data.message);
+            }
+        } catch (error) {
+            console.error('Error saving config:', error);
+            setSaveStatus('error');
+
+            // Fallback to download if server is not running
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectConfig, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "project-config.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     if (!projectConfig) {
@@ -333,11 +397,20 @@ const Editor: React.FC = () => {
             </div>
             <button
                 onClick={handleSave}
-                className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded shadow transition-colors"
-                title="Genera un JSON. Recuerda mover tus archivos nuevos a /media"
+                disabled={isSaving}
+                className={`flex items-center gap-2 px-4 py-2 rounded shadow transition-all ${isSaving ? 'bg-gray-400 cursor-not-allowed' :
+                    saveStatus === 'success' ? 'bg-green-600 hover:bg-green-700' :
+                        saveStatus === 'error' ? 'bg-orange-600 hover:bg-orange-700' :
+                            'bg-primary hover:bg-primary-dark'
+                    } text-white`}
+                title={saveStatus === 'error' ? 'Servidor no detectado. Se descargará el archivo.' : 'Guarda los cambios directamente en el proyecto'}
             >
-                <span className="material-icons">save_alt</span>
-                <span>Guardar / Exportar JSON</span>
+                <span className="material-icons">
+                    {isSaving ? 'sync' : saveStatus === 'success' ? 'check_circle' : saveStatus === 'error' ? 'warning' : 'save'}
+                </span>
+                <span>
+                    {isSaving ? 'Guardando...' : saveStatus === 'success' ? 'Guardado' : saveStatus === 'error' ? 'Descargado (Local Offline)' : 'Guardar Cambios'}
+                </span>
             </button>
         </div>
     );
@@ -353,6 +426,7 @@ const Editor: React.FC = () => {
                     onUploadContent={handleUploadContent}
                     onAddHtmlContent={handleAddHtmlContent}
                     onReorderContent={handleReorderContent}
+                    onDeleteContent={handleDeleteContent}
                 />
             }
             centerPanel={

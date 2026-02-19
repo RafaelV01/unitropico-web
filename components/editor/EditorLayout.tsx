@@ -14,7 +14,7 @@ const EditorLayout: React.FC<EditorLayoutProps> = ({ leftPanel, centerPanel, rig
                 {header}
             </div>
             <div className="flex flex-1 overflow-hidden">
-                <div className="w-64 flex-none border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-y-auto">
+                <div className="w-72 flex-none border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-y-auto">
                     {leftPanel}
                 </div>
                 <div className="flex-1 flex flex-col min-w-0 bg-gray-200 dark:bg-gray-950 relative overflow-hidden">

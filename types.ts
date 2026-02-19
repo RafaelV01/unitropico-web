@@ -37,7 +37,7 @@ export interface Hotspot {
 export interface Content {
   id: string;
   title: string;
-  type: 'image' | 'video' | 'html';
+  type: 'image' | 'video' | 'html' | 'pdf';
   src?: string;
   html?: string;
   allowScripts?: boolean;

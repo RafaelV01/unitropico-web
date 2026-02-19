@@ -19,12 +19,16 @@ const ScrollToTop = () => {
   return null;
 };
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { pathname } = useLocation();
+  // Hide footer on specific presentation/editor routes
+  const hideFooter = pathname.includes('/quality-conditions/') || pathname === '/editor';
+
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <ScrollToTop />
-        {/*<Navbar />*/}
+    <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
+      {/*<Navbar />*/}
+      <div className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/curriculum" element={<Curriculum />} />
@@ -35,8 +39,16 @@ const App: React.FC = () => {
           <Route path="/quality-conditions/:id" element={<QualityConditionDetail />} />
           <Route path="/editor" element={<Editor />} />
         </Routes>
-        <Footer />
       </div>
+      {!hideFooter && <Footer />}
+    </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };

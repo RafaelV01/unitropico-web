@@ -8,6 +8,7 @@ interface ContentListProps {
   onUploadContent?: (file: File) => void;
   onAddHtmlContent?: () => void;
   onReorderContent?: (fromIndex: number, toIndex: number) => void;
+  onDeleteContent?: (contentId: string) => void;
   readOnly?: boolean;
 }
 
@@ -18,10 +19,12 @@ const ContentList: React.FC<ContentListProps> = ({
   onUploadContent,
   onAddHtmlContent,
   onReorderContent,
+  onDeleteContent,
   readOnly = false
 }) => {
   const [draggedIndex, setDraggedIndex] = React.useState<number | null>(null);
 
+  // ... (keep helper functions unchanged) ...
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0] && onUploadContent) {
       onUploadContent(e.target.files[0]);
@@ -65,11 +68,11 @@ const ContentList: React.FC<ContentListProps> = ({
             >
               <span className="material-icons text-xl">code</span>
             </button>
-            <label className="cursor-pointer text-primary hover:text-primary-dark p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Agregar imagen/video">
+            <label className="cursor-pointer text-primary hover:text-primary-dark p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Agregar imagen/video/pdf">
               <span className="material-icons text-xl">add_photo_alternate</span>
               <input
                 type="file"
-                accept="image/*,video/*"
+                accept="image/*,video/*,application/pdf,.pdf"
                 className="hidden"
                 onChange={handleFileUpload}
               />
@@ -101,25 +104,39 @@ const ContentList: React.FC<ContentListProps> = ({
                   onDragStart={(e) => handleDragStart(e, index)}
                   onDragOver={handleDragOver}
                   onDrop={(e) => handleDrop(e, index)}
-                  className={`relative ${isDragging ? 'opacity-50' : ''} `}
+                  className={`relative group/item ${isDragging ? 'opacity-50' : ''} `}
                 >
-                  <button
-                    onClick={() => onSelectContent(contentId)}
-                    className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors flex items-center gap-2 group 
-                        ${!readOnly ? 'cursor-grab active:cursor-grabbing' : 'cursor-pointer'}
-                        ${isSelected
-                        ? 'bg-primary/10 text-primary dark:text-accent border border-primary/20 font-medium'
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-700 border border-transparent'
-                      } `}
-                  >
-                    {!readOnly && (
-                      <span className="material-icons text-gray-400 group-hover:text-gray-600 cursor-grab" style={{ fontSize: '14px' }}>drag_indicator</span>
+                  <div className="flex items-center gap-1 group/item">
+                    {!readOnly && onDeleteContent && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onDeleteContent(contentId);
+                        }}
+                        className="opacity-0 group-hover/item:opacity-100 p-1 text-gray-400 hover:text-red-500 transition-all rounded hover:bg-red-50 shrink-0"
+                        title="Borrar diapositiva"
+                      >
+                        <span className="material-icons text-lg">delete_outline</span>
+                      </button>
                     )}
-                    <span className="material-icons text-xs">
-                      {content.type === 'video' ? 'movie' : content.type === 'html' ? 'code' : 'image'}
-                    </span>
-                    <span className="truncate flex-1">{content.title || contentId}</span>
-                  </button>
+                    <button
+                      onClick={() => onSelectContent(contentId)}
+                      className={`flex-1 text-left px-3 py-2 rounded-md text-sm transition-colors flex items-center gap-2 min-w-0
+                          ${!readOnly ? 'cursor-grab active:cursor-grabbing' : 'cursor-pointer'}
+                          ${isSelected
+                          ? 'bg-primary/10 text-primary dark:text-accent border border-primary/20 font-medium'
+                          : 'hover:bg-gray-100 dark:hover:bg-gray-700 border border-transparent'
+                        } `}
+                    >
+                      {!readOnly && (
+                        <span className="material-icons text-gray-400 group-hover:text-gray-600 cursor-grab shrink-0" style={{ fontSize: '14px' }}>drag_indicator</span>
+                      )}
+                      <span className="material-icons text-xs shrink-0">
+                        {content.type === 'video' ? 'movie' : content.type === 'html' ? 'code' : content.type === 'pdf' ? 'picture_as_pdf' : 'image'}
+                      </span>
+                      <span className="truncate flex-1">{content.title || contentId}</span>
+                    </button>
+                  </div>
                 </div>
               );
             })}

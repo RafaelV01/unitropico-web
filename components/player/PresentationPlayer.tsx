@@ -12,6 +12,7 @@ const PresentationPlayer: React.FC<PresentationPlayerProps> = ({ sequenceId }) =
     const [projectConfig, setProjectConfig] = useState<ProjectConfig | null>(null);
     const [selectedContentId, setSelectedContentId] = useState<string | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
     // Load project config
     useEffect(() => {
@@ -53,40 +54,85 @@ const PresentationPlayer: React.FC<PresentationPlayerProps> = ({ sequenceId }) =
         }
     };
 
-    const handleNext = () => {
+    const handleNext = React.useCallback(() => {
         if (!activeSequence || !selectedContentId) return;
         const currentIndex = activeSequence.contents.indexOf(selectedContentId);
         if (currentIndex < activeSequence.contents.length - 1) {
             setSelectedContentId(activeSequence.contents[currentIndex + 1]);
         }
-    };
+    }, [activeSequence, selectedContentId]);
 
-    const handlePrev = () => {
+    const handlePrev = React.useCallback(() => {
         if (!activeSequence || !selectedContentId) return;
         const currentIndex = activeSequence.contents.indexOf(selectedContentId);
         if (currentIndex > 0) {
             setSelectedContentId(activeSequence.contents[currentIndex - 1]);
         }
-    };
+    }, [activeSequence, selectedContentId]);
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            // Only trigger if no input/textarea is focused (avoid issues in editor or search)
+            if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') return;
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                handleNext();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                handlePrev();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [handleNext, handlePrev]);
 
     if (!projectConfig || !activeSequence) {
-        return <div className="flex justify-center items-center h-screen">Cargando presentación...</div>;
+        return <div className="flex justify-center items-center h-screen bg-gray-900 text-white">Cargando presentación...</div>;
     }
 
     return (
-        <div className="flex h-screen w-full bg-gray-900 text-white overflow-hidden">
-            {/* Left Panel - Navigation (Collapsible ideally, but fixed for MVP) */}
-            <div className="w-80 border-r border-gray-800 bg-gray-900 flex flex-col">
-                <div className="p-4 border-b border-gray-800 flex items-center gap-3">
-                    <Link to="/quality-conditions" className="text-gray-400 hover:text-white transition-colors">
-                        <span className="material-icons">arrow_back</span>
-                    </Link>
-                    <h2 className="font-bold text-lg truncate" title={activeSequence.title}>
-                        {activeSequence.title}
-                    </h2>
+        <div className="flex h-screen w-full bg-gray-900 text-white overflow-hidden relative">
+            {/* Expand Button (Floating) - Visible only when sidebar is hidden */}
+            {!isSidebarVisible && (
+                <button
+                    onClick={() => setIsSidebarVisible(true)}
+                    className="fixed top-32 left-4 z-50 w-12 h-12 flex items-center justify-center bg-[#347b72] rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 group border border-[#e1d9bf]/20"
+                    title="Mostrar menú de navegación"
+                >
+                    <span
+                        className="text-2xl font-black select-none transition-transform group-hover:translate-x-0.5"
+                        style={{ color: '#e1d9bf' }}
+                    >
+                        &gt;
+                    </span>
+                </button>
+            )}
+
+            {/* Left Panel - Navigation */}
+            <aside
+                className={`transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-r border-gray-800 bg-gray-900 flex flex-col z-20 shrink-0 ${isSidebarVisible ? 'w-80 translate-x-0 opacity-100 shadow-2xl' : 'w-0 -translate-x-full opacity-0 pointer-events-none'
+                    }`}
+            >
+                <div className="p-4 border-b border-gray-800 flex items-center justify-between gap-3 min-w-[20rem]">
+                    <div className="flex items-center gap-3 truncate">
+                        <Link to="/quality-conditions" className="text-gray-400 hover:text-white transition-colors">
+                            <span className="material-icons">arrow_back</span>
+                        </Link>
+                        <h2 className="font-bold text-lg truncate" title={activeSequence.title}>
+                            {activeSequence.title}
+                        </h2>
+                    </div>
+                    <button
+                        onClick={() => setIsSidebarVisible(false)}
+                        className="p-1 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center text-gray-400 hover:text-white"
+                        title="Ocultar menú"
+                    >
+                        <span className="material-icons">chevron_left</span>
+                    </button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto">
+                <div className="flex-1 overflow-y-auto min-w-[20rem]">
                     {filteredConfig && (
                         <ContentList
                             projectConfig={filteredConfig}
@@ -100,28 +146,28 @@ const PresentationPlayer: React.FC<PresentationPlayerProps> = ({ sequenceId }) =
                 </div>
 
                 {/* Navigation Controls */}
-                <div className="p-4 border-t border-gray-800 flex justify-between gap-4">
+                <div className="p-4 border-t border-gray-800 flex justify-between gap-4 min-w-[20rem]">
                     <button
                         onClick={handlePrev}
                         disabled={!selectedContentId || activeSequence.contents.indexOf(selectedContentId) === 0}
-                        className="flex-1 flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed py-3 rounded-lg transition-colors"
+                        className="flex-1 flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed py-3 rounded-lg transition-colors text-sm font-medium"
                     >
-                        <span className="material-icons">navigate_before</span>
+                        <span className="material-icons text-xl">navigate_before</span>
                         Anterior
                     </button>
                     <button
                         onClick={handleNext}
                         disabled={!selectedContentId || activeSequence.contents.indexOf(selectedContentId) === activeSequence.contents.length - 1}
-                        className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed py-3 rounded-lg transition-colors text-white"
+                        className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark disabled:opacity-30 disabled:cursor-not-allowed py-3 rounded-lg transition-colors text-white text-sm font-medium shadow-lg hover:shadow-primary/20"
                     >
                         Siguiente
-                        <span className="material-icons">navigate_next</span>
+                        <span className="material-icons text-xl">navigate_next</span>
                     </button>
                 </div>
-            </div>
+            </aside>
 
             {/* Center Panel - Presentation */}
-            <div className="flex-1 bg-black relative">
+            <main className="flex-1 bg-black relative flex items-center justify-center overflow-hidden h-full">
                 <PresentationContainer
                     content={selectedContent}
                     selectedHotspotId={null}
@@ -131,7 +177,7 @@ const PresentationPlayer: React.FC<PresentationPlayerProps> = ({ sequenceId }) =
                     onHotspotClick={handleHotspotClick}
                     onNavigate={handleSelectContent}
                 />
-            </div>
+            </main>
         </div>
     );
 };
