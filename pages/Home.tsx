@@ -86,7 +86,7 @@ const Home: React.FC = () => {
             >
               <span>Condiciones de Calidad</span>
             </Link>
-            <Link
+            {/* <Link
               to="/editor"
               className="flex items-center gap-2 px-6 py-3 rounded font-medium font-montserrat border-2 transition-all duration-200"
               style={{ borderColor: '#9ABDB8', color: '#679C95' }}
@@ -94,7 +94,7 @@ const Home: React.FC = () => {
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = 'transparent'; el.style.color = '#679C95'; }}
             >
               <span>Editor MVP</span>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Quick Stats */}
