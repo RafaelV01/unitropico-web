@@ -92,8 +92,8 @@ const QualityConditions: React.FC = () => {
 
                 {/* Partial Orbit Preview */}
                 <div className="absolute bottom-[-400px] left-1/2 transform -translate-x-1/2 scale-75 opacity-50 pointer-events-none lg:block hidden">
-                    <div className="w-[1000px] h-[1000px] rounded-full flex items-center justify-center" style={{ border: 'none' }}>
-                        <div className="w-[700px] h-[700px] rounded-full border-dashed" style={{ border: 'none' }}></div>
+                    <div className="w-[800px] h-[800px] rounded-full flex items-center justify-center" style={{ border: '1px solid rgba(0, 89, 78, 0.1)' }}>
+                        <div className="w-[550px] h-[550px] rounded-full border-dashed" style={{ border: '1px dashed rgba(0, 89, 78, 0.1)' }}></div>
                     </div>
                 </div>
 
@@ -116,13 +116,13 @@ const QualityConditions: React.FC = () => {
                     </div>
 
                     {/* Orbit ring decorations */}
-                    <div className="absolute top-1/2 left-1/2 w-[760px] h-[760px] rounded-full pointer-events-none"
-                        style={{ border: 'none', transform: 'translate(-50%, -50%)' }}></div>
-                    <div className="absolute top-1/2 left-1/2 w-[560px] h-[560px] rounded-full pointer-events-none border-dashed"
-                        style={{ border: 'none', transform: 'translate(-50%, -50%)' }}></div>
+                    <div className="absolute top-1/2 left-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+                        style={{ border: '1px solid rgba(0, 89, 78, 0.1)', transform: 'translate(-50%, -50%)' }}></div>
+                    <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full pointer-events-none border-dashed"
+                        style={{ border: '1px dashed rgba(0, 89, 78, 0.1)', transform: 'translate(-50%, -50%)' }}></div>
 
                     {/* ── Orbit cards — each with its own explicit pos-N class ── */}
-                    <Link className="orbit-item pos-1 group w-56" to="/quality-conditions/01">
+                    <Link className="orbit-item pos-1 group w-52" to="/quality-conditions/01">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>01</div>
                             <div className="flex flex-col items-center text-center">
@@ -133,7 +133,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-2 group w-56" to="/quality-conditions/02">
+                    <Link className="orbit-item pos-2 group w-52" to="/quality-conditions/02">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>02</div>
                             <div className="flex flex-col items-center text-center">
@@ -144,7 +144,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-3 group w-56" to="/quality-conditions/03">
+                    <Link className="orbit-item pos-3 group w-52" to="/quality-conditions/03">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>03</div>
                             <div className="flex flex-col items-center text-center">
@@ -155,7 +155,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-4 group w-56" to="/quality-conditions/04">
+                    <Link className="orbit-item pos-4 group w-52" to="/quality-conditions/04">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>04</div>
                             <div className="flex flex-col items-center text-center">
@@ -166,7 +166,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-5 group w-56" to="/quality-conditions/05">
+                    <Link className="orbit-item pos-5 group w-52" to="/quality-conditions/05">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>05</div>
                             <div className="flex flex-col items-center text-center">
@@ -177,7 +177,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-6 group w-56" to="/quality-conditions/06">
+                    <Link className="orbit-item pos-6 group w-52" to="/quality-conditions/06">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>06</div>
                             <div className="flex flex-col items-center text-center">
@@ -188,7 +188,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-7 group w-56" to="/quality-conditions/07">
+                    <Link className="orbit-item pos-7 group w-52" to="/quality-conditions/07">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>07</div>
                             <div className="flex flex-col items-center text-center">
@@ -199,7 +199,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-8 group w-56" to="/quality-conditions/08">
+                    <Link className="orbit-item pos-8 group w-52" to="/quality-conditions/08">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>08</div>
                             <div className="flex flex-col items-center text-center">
@@ -210,7 +210,7 @@ const QualityConditions: React.FC = () => {
                         </div>
                     </Link>
 
-                    <Link className="orbit-item pos-9 group w-56" to="/quality-conditions/09">
+                    <Link className="orbit-item pos-9 group w-52" to="/quality-conditions/09">
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>09</div>
                             <div className="flex flex-col items-center text-center">

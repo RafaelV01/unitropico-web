@@ -119,7 +119,7 @@ const PresentationPlayer: React.FC<PresentationPlayerProps> = ({ sequenceId }) =
                         <Link to="/quality-conditions" className="text-gray-400 hover:text-white transition-colors">
                             <span className="material-icons">arrow_back</span>
                         </Link>
-                        <h2 className="font-bold text-lg truncate" title={activeSequence.title}>
+                        <h2 className="font-black text-lg truncate uppercase tracking-tight" style={{ color: '#B5A160' }} title={activeSequence.title}>
                             {activeSequence.title}
                         </h2>
                     </div>

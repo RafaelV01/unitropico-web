@@ -56,8 +56,8 @@ const ContentList: React.FC<ContentListProps> = ({
   return (
     <div className={`p-4 space-y-6 ${readOnly ? 'h-full overflow-y-auto' : ''}`}>
       <div className="flex justify-between items-center">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-          {readOnly ? 'Navegación' : 'Estructura'}
+        <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent/80">
+          {readOnly ? 'NAVEGACIÓN' : 'ESTRUCTURA DEL PROYECTO'}
         </h3>
         {!readOnly && (
           <div className="flex gap-2">
@@ -121,20 +121,20 @@ const ContentList: React.FC<ContentListProps> = ({
                     )}
                     <button
                       onClick={() => onSelectContent(contentId)}
-                      className={`flex-1 text-left px-3 py-2 rounded-md text-sm transition-colors flex items-center gap-2 min-w-0
+                      className={`flex-1 text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 flex items-center gap-3 min-w-0 shadow-sm
                           ${!readOnly ? 'cursor-grab active:cursor-grabbing' : 'cursor-pointer'}
                           ${isSelected
-                          ? 'bg-primary/10 text-primary dark:text-accent border border-primary/20 font-medium'
-                          : 'hover:bg-gray-100 dark:hover:bg-gray-700 border border-transparent'
+                          ? (readOnly ? 'bg-accent text-white font-black scale-[1.02] shadow-accent/20' : 'bg-primary/20 text-primary border border-primary/30 font-bold')
+                          : (readOnly ? 'text-white/90 hover:bg-primary-mid/20 hover:text-white border border-transparent' : 'hover:bg-gray-100 dark:hover:bg-gray-700 border border-transparent')
                         } `}
                     >
                       {!readOnly && (
                         <span className="material-icons text-gray-400 group-hover:text-gray-600 cursor-grab shrink-0" style={{ fontSize: '14px' }}>drag_indicator</span>
                       )}
-                      <span className="material-icons text-xs shrink-0">
+                      <span className={`material-icons text-xs shrink-0 ${isSelected ? 'text-white' : 'text-accent'}`}>
                         {content.type === 'video' ? 'movie' : content.type === 'html' ? 'code' : content.type === 'pdf' ? 'picture_as_pdf' : 'image'}
                       </span>
-                      <span className="truncate flex-1">{content.title || contentId}</span>
+                      <span className="flex-1 overflow-visible break-words">{content.title || contentId}</span>
                     </button>
                   </div>
                 </div>

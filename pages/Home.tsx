@@ -14,7 +14,7 @@ const Home: React.FC = () => {
           src="/img/lateral.webp"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover object-left"
+          className="w-full h-full object-cover object-left animate-pulse-subtle origin-left"
         />
         {/* Right-side fade so content panel stays readable */}
         <div className="absolute inset-0"

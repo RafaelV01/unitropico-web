@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Content, Hotspot } from '../../types';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface PresentationContainerProps {
     content: Content | null;
@@ -103,116 +104,122 @@ const PresentationContainer: React.FC<PresentationContainerProps> = ({
 
     return (
         <div className={`w-full h-full flex items-center justify-center ${readOnly ? 'bg-black' : 'p-8'}`}>
-            {/* 16:9 Aspect Ratio Container */}
-            <div
-                ref={containerRef}
-                className={`relative w-full shadow-2xl overflow-hidden select-none 
-                    ${readOnly ? '' : 'cursor-crosshair group bg-black'}`}
-                style={{ aspectRatio: '16/9', maxHeight: '100%' }}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={() => {
-                    if (isDrawing) {
-                        setIsDrawing(false);
-                        setStartPos(null);
-                        setCurrentPos(null);
-                    }
-                }}
-            >
-                {/* Content Layer */}
-                {content.type === 'video' ? (
-                    <video
-                        src={previewUrl || content.src}
-                        className="w-full h-full object-contain pointer-events-none"
-                        controls
-                        autoPlay={readOnly}
-                    />
-                ) : content.type === 'html' ? (
-                    <iframe
-                        srcDoc={content.html}
-                        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation"
-                        className="w-full h-full border-none"
-                        title={content.title}
-                    />
-                ) : content.type === 'pdf' ? (
-                    <div className="w-full h-full bg-gray-100 rounded-lg overflow-hidden flex flex-col">
-                        <div className="bg-white/80 backdrop-blur-md p-3 border-b border-gray-200 flex items-center justify-between shrink-0">
-                            <div className="flex items-center gap-2">
-                                <span className="material-icons text-red-600">picture_as_pdf</span>
-                                <span className="text-sm font-bold text-gray-700 truncate">{content.title}</span>
-                            </div>
-                            <a
-                                href={previewUrl || encodeURI(content.src || '')}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs font-bold text-primary hover:underline flex items-center gap-1 shrink-0"
-                            >
-                                <span className="material-icons text-xs">open_in_new</span>
-                                Ampliar
-                            </a>
-                        </div>
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={content.id}
+                    initial={{ opacity: 0.8, scale: 0.99 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0.8, scale: 1.01 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    ref={containerRef}
+                    className={`relative w-full shadow-2xl overflow-hidden select-none 
+                        ${readOnly ? '' : 'cursor-crosshair group bg-black'}`}
+                    style={{ aspectRatio: '16/9', maxHeight: '100%' }}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={() => {
+                        if (isDrawing) {
+                            setIsDrawing(false);
+                            setStartPos(null);
+                            setCurrentPos(null);
+                        }
+                    }}
+                >
+                    {/* Content Layer */}
+                    {content.type === 'video' ? (
+                        <video
+                            src={previewUrl || content.src}
+                            className="w-full h-full object-contain pointer-events-none"
+                            controls
+                            autoPlay={readOnly}
+                        />
+                    ) : content.type === 'html' ? (
                         <iframe
-                            src={`${previewUrl || encodeURI(content.src || '')}#toolbar=1`}
+                            srcDoc={content.html}
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation"
                             className="w-full h-full border-none"
                             title={content.title}
                         />
-                    </div>
-                ) : (
-                    <img
-                        src={previewUrl || content.src}
-                        alt={content.title}
-                        className="w-full h-full object-contain pointer-events-none user-select-none"
-                        draggable={false}
-                    />
-                )}
-
-                {/* Hotspots Layer */}
-                {content.hotspots.map((hotspot) => (
-                    <div
-                        key={hotspot.id}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            if (readOnly && onHotspotClick) {
-                                onHotspotClick(hotspot);
-                            } else {
-                                onSelectHotspot(hotspot.id);
-                            }
-                        }}
-                        className={`absolute transition-all cursor-pointer
-              ${readOnly
-                                ? 'hover:bg-white/10 z-20' // Read-only style
-                                : `${selectedHotspotId === hotspot.id ? 'border-2 border-primary bg-primary/20 z-20 opacity-100' : 'border-2 border-transparent hover:border-white/50 hover:bg-white/10 z-10'}`
-                            }`}
-                        style={{
-                            left: `${hotspot.x * 100}%`,
-                            top: `${hotspot.y * 100}%`,
-                            width: `${hotspot.width * 100}%`,
-                            height: `${hotspot.height * 100}%`,
-                        }}
-                        title={readOnly ? hotspot.title : undefined}
-                    >
-                        {!readOnly && selectedHotspotId === hotspot.id && (
-                            <div className="absolute -top-6 left-0 bg-primary text-white text-xs px-2 py-1 rounded">
-                                {hotspot.title || 'Hotspot'}
+                    ) : content.type === 'pdf' ? (
+                        <div className="w-full h-full bg-gray-100 rounded-lg overflow-hidden flex flex-col">
+                            <div className="bg-white/80 backdrop-blur-md p-3 border-b border-gray-200 flex items-center justify-between shrink-0">
+                                <div className="flex items-center gap-2">
+                                    <span className="material-icons text-red-600">picture_as_pdf</span>
+                                    <span className="text-sm font-bold text-gray-700 truncate">{content.title}</span>
+                                </div>
+                                <a
+                                    href={previewUrl || encodeURI(content.src || '')}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs font-bold text-primary hover:underline flex items-center gap-1 shrink-0"
+                                >
+                                    <span className="material-icons text-xs">open_in_new</span>
+                                    Ampliar
+                                </a>
                             </div>
-                        )}
-                    </div>
-                ))}
+                            <iframe
+                                src={`${previewUrl || encodeURI(content.src || '')}#toolbar=1`}
+                                className="w-full h-full border-none"
+                                title={content.title}
+                            />
+                        </div>
+                    ) : (
+                        <img
+                            src={previewUrl || content.src}
+                            alt={content.title}
+                            className="w-full h-full object-contain pointer-events-none user-select-none"
+                            draggable={false}
+                        />
+                    )}
 
-                {/* Drawing Preview Layer */}
-                {!readOnly && isDrawing && startPos && currentPos && (
-                    <div
-                        className="absolute border-2 border-dashed border-yellow-400 bg-yellow-400/20 z-30 pointer-events-none"
-                        style={{
-                            left: `${Math.min(startPos.x, currentPos.x) * 100}%`,
-                            top: `${Math.min(startPos.y, currentPos.y) * 100}%`,
-                            width: `${Math.abs(currentPos.x - startPos.x) * 100}%`,
-                            height: `${Math.abs(currentPos.y - startPos.y) * 100}%`,
-                        }}
-                    />
-                )}
-            </div>
+                    {/* Hotspots Layer */}
+                    {content.hotspots.map((hotspot) => (
+                        <div
+                            key={hotspot.id}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (readOnly && onHotspotClick) {
+                                    onHotspotClick(hotspot);
+                                } else {
+                                    onSelectHotspot(hotspot.id);
+                                }
+                            }}
+                            className={`absolute transition-all cursor-pointer
+                    ${readOnly
+                                    ? 'hover:bg-white/10 z-20' // Read-only style
+                                    : `${selectedHotspotId === hotspot.id ? 'border-2 border-primary bg-primary/20 z-20 opacity-100' : 'border-2 border-transparent hover:border-white/50 hover:bg-white/10 z-10'}`
+                                }`}
+                            style={{
+                                left: `${hotspot.x * 100}%`,
+                                top: `${hotspot.y * 100}%`,
+                                width: `${hotspot.width * 100}%`,
+                                height: `${hotspot.height * 100}%`,
+                            }}
+                            title={readOnly ? hotspot.title : undefined}
+                        >
+                            {!readOnly && selectedHotspotId === hotspot.id && (
+                                <div className="absolute -top-6 left-0 bg-primary text-white text-xs px-2 py-1 rounded">
+                                    {hotspot.title || 'Hotspot'}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+
+                    {/* Drawing Preview Layer */}
+                    {!readOnly && isDrawing && startPos && currentPos && (
+                        <div
+                            className="absolute border-2 border-dashed border-yellow-400 bg-yellow-400/20 z-30 pointer-events-none"
+                            style={{
+                                left: `${Math.min(startPos.x, currentPos.x) * 100}%`,
+                                top: `${Math.min(startPos.y, currentPos.y) * 100}%`,
+                                width: `${Math.abs(currentPos.x - startPos.x) * 100}%`,
+                                height: `${Math.abs(currentPos.y - startPos.y) * 100}%`,
+                            }}
+                        />
+                    )}
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 };

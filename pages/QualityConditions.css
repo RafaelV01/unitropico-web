@@ -14,15 +14,41 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pos-1  { transform: translate(-50%, -50%) rotate(-90deg)  translate(380px) rotate(90deg);   }
-.pos-2  { transform: translate(-50%, -50%) rotate(-50deg)  translate(380px) rotate(50deg);   }
-.pos-3  { transform: translate(-50%, -50%) rotate(-10deg)  translate(380px) rotate(10deg);   }
-.pos-4  { transform: translate(-50%, -50%) rotate(30deg)   translate(380px) rotate(-30deg);  }
-.pos-5  { transform: translate(-50%, -50%) rotate(70deg)   translate(380px) rotate(-70deg);  }
-.pos-6  { transform: translate(-50%, -50%) rotate(110deg)  translate(380px) rotate(-110deg); }
-.pos-7  { transform: translate(-50%, -50%) rotate(150deg)  translate(380px) rotate(-150deg); }
-.pos-8  { transform: translate(-50%, -50%) rotate(190deg)  translate(380px) rotate(-190deg); }
-.pos-9  { transform: translate(-50%, -50%) rotate(230deg)  translate(380px) rotate(-230deg); }
+.pos-1 {
+    transform: translate(-50%, -50%) rotate(-90deg) translate(350px) rotate(90deg);
+}
+
+.pos-2 {
+    transform: translate(-50%, -50%) rotate(-50deg) translate(350px) rotate(50deg);
+}
+
+.pos-3 {
+    transform: translate(-50%, -50%) rotate(-10deg) translate(350px) rotate(10deg);
+}
+
+.pos-4 {
+    transform: translate(-50%, -50%) rotate(30deg) translate(350px) rotate(-30deg);
+}
+
+.pos-5 {
+    transform: translate(-50%, -50%) rotate(68deg) translate(350px) rotate(-68deg);
+}
+
+.pos-6 {
+    transform: translate(-50%, -50%) rotate(112deg) translate(350px) rotate(-112deg);
+}
+
+.pos-7 {
+    transform: translate(-50%, -50%) rotate(150deg) translate(350px) rotate(-150deg);
+}
+
+.pos-8 {
+    transform: translate(-50%, -50%) rotate(190deg) translate(350px) rotate(-190deg);
+}
+
+.pos-9 {
+    transform: translate(-50%, -50%) rotate(230deg) translate(350px) rotate(-230deg);
+}
 
 .orbit-item:hover {
     z-index: 50;
@@ -60,17 +86,34 @@
 
 /* ── Animations ───────────────────────────────────────────── */
 @keyframes spin-slow {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to   { transform: translate(-50%, -50%) rotate(360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 @keyframes spin-reverse {
-    from { transform: translate(-50%, -50%) rotate(360deg); }
-    to   { transform: translate(-50%, -50%) rotate(0deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
 }
 
-.animate-spin-slow    { animation: spin-slow    80s linear infinite; }
-.animate-spin-reverse { animation: spin-reverse 60s linear infinite; }
+.animate-spin-slow {
+    animation: spin-slow 80s linear infinite;
+}
+
+.animate-spin-reverse {
+    animation: spin-reverse 60s linear infinite;
+}
 
 /* ── Orbit card hover ─────────────────────────────────────── */
-.group:hover .center-preview { opacity: 1; }
+.group:hover .center-preview {
+    opacity: 1;
+}
