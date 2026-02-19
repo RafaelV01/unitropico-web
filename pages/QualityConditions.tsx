@@ -110,7 +110,7 @@ const QualityConditions: React.FC = () => {
                         <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #F0ECDF 100%)', opacity: 0.8 }}></div>
                         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
                             <span className="material-symbols-outlined text-6xl mb-2" style={{ color: '#00594E' }}>hub</span>
-                            <span className="text-xs font-montserrat font-black tracking-widest" style={{ color: '#00594E' }}>UNITRÓPICO AI</span>
+                            <span className="text-center text-xs font-montserrat font-black tracking-widest" style={{ color: '#00594E' }}>INGENIERÍA EN INTELIGENCIA ARTIFICIAL</span>
                             <div className="mt-4 w-16 h-0.5" style={{ backgroundColor: '#B5A160' }}></div>
                         </div>
                     </div>
