@@ -126,7 +126,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>01</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>description</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">description</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Denominación</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -137,7 +137,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>02</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>lightbulb</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">lightbulb</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Justificación</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -148,7 +148,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>03</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>school</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">school</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Curricular</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -159,7 +159,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>04</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>calendar_month</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">calendar_month</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Organización</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -170,7 +170,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>05</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>biotech</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">biotech</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Investigación</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -181,7 +181,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>06</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>handshake</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">handshake</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Sector</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -192,7 +192,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>07</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>groups</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">groups</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Docentes</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -203,7 +203,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>08</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>computer</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">computer</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Medios</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
@@ -214,7 +214,7 @@ const QualityConditions: React.FC = () => {
                         <div className="relative bg-white p-6 rounded-lg hover:bg-[#00594E] hover:text-white transition-all duration-300 elegant-shadow group-hover:shadow-xl group-hover:-translate-y-1" style={{ border: '1px solid #CCDEDC' }}>
                             <div className="absolute -top-3 -left-3 text-white text-base font-black w-8 h-8 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>09</div>
                             <div className="flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-3xl mb-2 group-hover:text-white group-hover:scale-110 transition-transform" style={{ color: '#00594E' }}>apartment</span>
+                                <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">apartment</span>
                                 <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Infraestructura</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
