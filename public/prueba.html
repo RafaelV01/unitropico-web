@@ -1,185 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Relación Denominación</title>
 <link rel="stylesheet" href="../css_presentaciones/unitropico_base.css">
-
 <style>
-
 /* ===== NAVBAR IGUAL AL QUE PASASTE ===== */
-.navbar-img{
-  width:100%;
-  background:#0f5e57;
-  text-align:center;
+.navbar-img {
+  width: 100%;
+  background: #0f5e57;
+  text-align: center;
 }
-
-.navbar-img img{
-  width:100%;
-  height:auto;
-  max-height:110px;
-  object-fit:contain;
-  display:block;
+.navbar-img img {
+  width: 100%;
+  height: auto;
+  max-height: 110px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ===== CONTENEDOR GENERAL ===== */
-.section-container{
-  position:relative;
-  min-height:85vh;
-  background:#f4f4f4;
-  padding:40px 20px 80px;
-  overflow:hidden;
+.section-container {
+  position: relative;
+  min-height: 85vh;
+  background: #f4f4f4;
+  padding: 40px 20px 80px;
+  overflow: hidden;
 }
 
 /* ===== TEXTO SUPERIOR IZQUIERDO ===== */
-.top-left-title{
-  color:#0f5e57;
-  font-weight:700;
-  font-size:18px;
-  max-width:700px;
+.top-left-title {
+  color: #0f5e57;
+  font-weight: 700;
+  font-size: 18px;
+  max-width: 700px;
+  margin-bottom: 20px;
 }
 
 /* ===== AREA CENTRAL ===== */
-.circle-area{
-  position:relative;
-  margin:60px auto;
-  width:520px;
-  height:520px;
+.circle-area {
+  position: relative;
+  margin: 60px auto;
+  width: 520px;
+  height: 520px;
 }
 
 /* ===== ANILLO DORADO ===== */
-.circle-ring{
-  position:absolute;
-  width:100%;
-  height:100%;
-  border:28px solid #B5A160;
-  border-radius:50%;
-  top:0;
-  left:0;
+.circle-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 28px solid #B5A160;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
 }
 
 /* ===== CIRCULO BASE ===== */
-.circle{
-  position:absolute;
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  background:#2f7c70;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  font-weight:600;
-  padding:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+.circle {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #2f7c70;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* ===== CIRCULO CENTRAL ===== */
-.circle.center{
-  width:200px;
-  height:200px;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:18px;
+.circle.center {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 18px;
 }
 
 /* ===== POSICIONES ===== */
-.circle.top{ top:-40px; left:50%; transform:translateX(-50%); }
-.circle.right{ right:-40px; top:50%; transform:translateY(-50%); }
-.circle.bottom{ bottom:-40px; left:50%; transform:translateX(-50%); }
-.circle.left{ left:-40px; top:50%; transform:translateY(-50%); }
+.circle.top { top: -40px; left: 50%; transform: translateX(-50%); }
+.circle.right { right: -40px; top: 50%; transform: translateY(-50%); }
+.circle.bottom { bottom: -40px; left: 50%; transform: translateX(-50%); }
+.circle.left { left: -40px; top: 50%; transform: translateY(-50%); }
 
 /* ===== BOTONES EXTERNOS ===== */
-.circle.button{
-  cursor:pointer;
-  transition:all .3s ease;
+.circle.button {
+  cursor: pointer;
+  transition: all .3s ease;
 }
-
-.circle.button:hover{
-  transform:translateY(-5px) scale(1.05);
+.circle.button:hover {
+  transform: translateY(-5px) scale(1.05);
 }
-
-/* Ajuste hover lateral */
-.circle.left.button:hover{ transform:translateY(-50%) scale(1.05); }
-.circle.right.button:hover{ transform:translateY(-50%) scale(1.05); }
-.circle.top.button:hover{ transform:translateX(-50%) scale(1.05); }
-.circle.bottom.button:hover{ transform:translateX(-50%) scale(1.05); }
+.circle.left.button:hover { transform: translateY(-50%) scale(1.05); }
+.circle.right.button:hover { transform: translateY(-50%) scale(1.05); }
+.circle.top.button:hover { transform: translateX(-50%) scale(1.05); }
+.circle.bottom.button:hover { transform: translateX(-50%) scale(1.05); }
 
 /* ===== CUADROS IZQUIERDA ===== */
-.text-box{
-  position:absolute;
-  border:2px solid #0f5e57;
-  border-radius:14px;
-  padding:18px 22px;
-  font-weight:600;
-  color:#B5A160;
-  background:white;
+.text-box {
+  position: absolute;
+  border: 2px solid #0f5e57;
+  border-radius: 14px;
+  padding: 18px 22px;
+  font-weight: 600;
+  color: #B5A160;
+  background: white;
+  display: none; /* Ocultos inicialmente */
 }
 
-.text-box.top{
-  left:40px;
-  top:220px;
+.text-box.top {
+  left: 40px;
+  top: 220px;
 }
 
-.text-box.bottom{
-  left:40px;
-  bottom:160px;
+.text-box.bottom {
+  left: 40px;
+  bottom: 160px;
 }
 
 /* ===== CUADRO DERECHO ===== */
-.stats-box{
-  position:absolute;
-  right:60px;
-  top:220px;
-  border:2px solid #0f5e57;
-  border-radius:28px;
-  padding:30px 40px;
-  background:white;
-  color:#B5A160;
-  font-weight:600;
-  line-height:1.8;
+.stats-box {
+  position: absolute;
+  right: 60px;
+  top: 220px;
+  border: 2px solid #0f5e57;
+  border-radius: 28px;
+  padding: 30px 40px;
+  background: white;
+  color: #B5A160;
+  font-weight: 600;
+  line-height: 1.8;
+  display: none; /* Oculto inicialmente */
 }
 
-.porcentajes{
-  color:#0f5e57
+.porcentajes {
+  color: #0f5e57;
 }
 
-.stats-box span{
-  font-weight:800;
-  font-size:18px;
+.stats-box span {
+  font-weight: 800;
+  font-size: 18px;
 }
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:1100px){
-
-  .circle-area{
-    transform:scale(.85);
+@media (max-width: 1100px) {
+  .circle-area {
+    transform: scale(0.85);
   }
-
-  .stats-box{
-    position:relative;
-    right:auto;
-    top:auto;
-    margin:40px auto 0;
+  /* En responsive, los cuadros pasan a ser relativos para que no se desordenen */
+  .text-box, .stats-box {
+    position: relative;
+    left: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    margin: 20px auto;
+    display: none; /* Siguen ocultos, pero al mostrarse serán bloque */
+    width: fit-content;
   }
-
-  .text-box{
-    position:relative;
-    left:auto;
-    top:auto;
-    bottom:auto;
-    margin:20px auto;
-    display:inline-block;
+  .stats-box {
+    margin: 20px auto;
+    text-align: left;
   }
 }
-
 </style>
 </head>
-
 <body>
 
 <!-- NAVBAR -->
@@ -195,17 +187,17 @@
     con el nivel de formación, con los contenidos curriculares y con el perfil de egreso
   </div>
 
-  <!-- Cuadros izquierda -->
-  <div class="text-box top">
+  <!-- Cuadros izquierda (ocultos) -->
+  <div class="text-box top" id="cuadroTitulo">
     Ingeniero(a) en<br>Inteligencia Artificial
   </div>
 
-  <div class="text-box bottom">
+  <div class="text-box bottom" id="cuadroNivel">
     Pregrado
   </div>
 
-  <!-- Cuadro derecho -->
-  <div class="stats-box">
+  <!-- Cuadro derecho (oculto) -->
+  <div class="stats-box" id="cuadroContenidos">
     Formación Profesional <span class="porcentajes">69,5%</span><br>
     Praxis Investigativa <span class="porcentajes">9,5%</span><br>
     Formación Integral <span class="porcentajes">12,2%</span><br>
@@ -214,32 +206,70 @@
 
   <!-- Area circular -->
   <div class="circle-area">
-
     <div class="circle-ring"></div>
-
     <div class="circle center">
       Ingeniería en<br>Inteligencia Artificial
     </div>
-
-    <div class="circle top button">
+    <div class="circle top button" id="btnTitulo">
       Título que<br>otorga
     </div>
-
-    <div class="circle right button">
+    <div class="circle right button" id="btnContenidos">
       Contenidos<br>Curriculares
     </div>
-
-    <div class="circle bottom button">
+    <div class="circle bottom button" id="btnPerfil">
       Perfil del<br>Egreso
     </div>
-
-    <div class="circle left button">
+    <div class="circle left button" id="btnNivel">
       Nivel de<br>formación
     </div>
-
   </div>
 
 </div>
+
+<script>
+// Función para alternar visibilidad
+function toggleElement(element) {
+  if (element.style.display === 'none' || getComputedStyle(element).display === 'none') {
+    // Si está oculto, lo mostramos
+    element.style.display = 'block';
+  } else {
+    // Si está visible, lo ocultamos
+    element.style.display = 'none';
+  }
+}
+
+// Obtener elementos
+const btnTitulo = document.getElementById('btnTitulo');
+const btnNivel = document.getElementById('btnNivel');
+const btnContenidos = document.getElementById('btnContenidos');
+const cuadroTitulo = document.getElementById('cuadroTitulo');
+const cuadroNivel = document.getElementById('cuadroNivel');
+const cuadroContenidos = document.getElementById('cuadroContenidos');
+
+// Asignar eventos
+btnTitulo.addEventListener('click', function(e) {
+  e.stopPropagation();
+  toggleElement(cuadroTitulo);
+});
+
+btnNivel.addEventListener('click', function(e) {
+  e.stopPropagation();
+  toggleElement(cuadroNivel);
+});
+
+btnContenidos.addEventListener('click', function(e) {
+  e.stopPropagation();
+  toggleElement(cuadroContenidos);
+});
+
+// El botón de perfil no hace nada (por ahora)
+btnPerfil.addEventListener('click', function(e) {
+  e.stopPropagation();
+  // No hay cuadro asociado
+});
+
+// Opcional: Si se hace clic en cualquier otra parte, no pasa nada
+</script>
 
 </body>
 </html>
