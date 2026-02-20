@@ -3,22 +3,35 @@ import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
-    <main className="flex-grow relative overflow-hidden flex flex-col min-h-[calc(100vh-5rem)] bg-white font-montserrat">
+    <main className="flex-grow relative overflow-hidden flex flex-col min-h-[calc(100vh-5rem)] font-montserrat">
 
       {/* Subtle top accent bar */}
       <div className="absolute top-0 right-0 w-1/3 h-[3px] z-20" style={{ backgroundColor: '#B5A160' }}></div>
 
-      {/* ── Full-bleed background image (lateral.webp fades on the right) ── */}
+      {/* ── Persisten Background Image Layer ── */}
+      <div className="absolute inset-0 z-0 bg-white">
+        <img
+          src="/img/background-1.jpg"
+          alt=""
+          className="w-full h-full object-cover opacity-50 mix-blend-multiply"
+        />
+
+        {/* Institutional Glows */}
+        <div className="absolute inset-0 opacity-20"
+          style={{ background: 'radial-gradient(circle at 15% 15%, rgba(181, 161, 96, 0.1) 0%, transparent 50%)' }}></div>
+      </div>
+
+      {/* ── Lateral Image layer (lateral.webp fades on the right) ── */}
       <div className="absolute inset-0 z-0">
         <img
           src="/img/lateral.webp"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover object-left animate-pulse-subtle origin-left"
+          className="w-full h-full object-cover object-left animate-pulse-subtle origin-left opacity-90"
         />
-        {/* Right-side fade so content panel stays readable */}
+        {/* Right-side fade (Enhanced transparency to show background-1) */}
         <div className="absolute inset-0"
-          style={{ background: 'linear-gradient(to right, transparent 35%, rgba(255,255,255,0.82) 55%, #ffffff 72%)' }}>
+          style={{ background: 'linear-gradient(to right, transparent 20%, rgba(255,255,255,0.4) 40%, rgba(255,255,255,0.7) 75%)' }}>
         </div>
       </div>
 
