@@ -42,18 +42,18 @@ const Home: React.FC = () => {
         <div className="hidden lg:block lg:w-[52%] flex-shrink-0" />
 
         {/* ── Right: Content panel ── */}
-        <div className="w-full lg:w-[48%] flex flex-col justify-center px-8 py-12 lg:px-14 xl:px-20">
+        <div className="w-full lg:w-[48%] flex flex-col justify-center px-8 py-6 lg:px-14 xl:px-20">
 
           {/* Faculty label */}
-          <div className="mb-6 hidden lg:block">
-            <p className="font-semibold subtitulo tracking-wide font-montserrat mb-2" style={{ color: '#00594E' }}>
+          <div className="hidden lg:block">
+            <p className="font-semibold subtitulo tracking-wide font-montserrat" style={{ color: '#00594E' }}>
               Facultad de Ingenierías
             </p>
             <div className="h-[3px] w-16 rounded-full" style={{ backgroundColor: '#B5A160' }}></div>
           </div>
 
           {/* Mobile faculty label */}
-          <div className="mb-4 lg:hidden">
+          <div className="mb-2 lg:hidden">
             <p className="font-semibold text-base tracking-wide font-montserrat" style={{ color: '#00594E' }}>
               Facultad de Ingenierías
             </p>
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Year badge + Title */}
-          <div className="flex flex-row items-center gap-5 mb-8">
+          <div className="flex flex-row items-center gap-5 mb-2">
             {/* Badge */}
             <div
               className="flex-shrink-0 flex items-center justify-center px-5 py-4 rounded shadow-lg hover:-translate-y-1 transition-transform cursor-default"
@@ -82,14 +82,14 @@ const Home: React.FC = () => {
           </div>
 
           {/* Description */}
-          <p className="subtitulo leading-relaxed mb-8 max-w-sm"
+          <p className="subtitulo leading-relaxed mb-2 max-w-sm"
             style={{ color: '#347B72' }}>
             Fórmate como líder en la revolución tecnológica. Diseña, implementa y gestiona sistemas
             inteligentes que transformarán el futuro de la industria y la sociedad en la Orinoquia y el mundo.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 mb-10">
+          <div className="flex flex-wrap gap-4 mb-2">
             <Link
               to="/quality-conditions"
               className="flex items-center gap-2 px-6 py-3 rounded font-semibold font-montserrat border-2 transition-all duration-200 hover:text-white"
@@ -99,6 +99,15 @@ const Home: React.FC = () => {
             >
               <span className="subtitulo">Condiciones de Calidad</span>
             </Link>
+            <a
+              href="agenda.html"
+              className="flex items-center gap-2 px-6 py-3 rounded font-semibold font-montserrat border-2 transition-all duration-200 hover:text-white"
+              style={{ borderColor: '#00594E', color: '#00594E' }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = '#00594E'; el.style.color = '#fff'; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = 'transparent'; el.style.color = '#00594E'; }}
+            >
+              <span className="subtitulo">Agenda del Programa</span>
+            </a>
             {/* <Link
               to="/editor"
               className="flex items-center gap-2 px-6 py-3 rounded font-medium font-montserrat border-2 transition-all duration-200"

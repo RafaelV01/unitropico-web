@@ -115,11 +115,11 @@ const PresentationPlayer: React.FC<PresentationPlayerProps> = ({ sequenceId }) =
                     }`}
             >
                 <div className="p-4 border-b border-gray-800 flex items-center justify-between gap-3 min-w-[20rem]">
-                    <div className="flex items-center gap-3 truncate">
-                        <Link to="/quality-conditions" className="text-gray-400 hover:text-white transition-colors">
+                    <div className="flex items-center gap-3">
+                        <Link to="/quality-conditions" className="text-gray-400 hover:text-white transition-colors flex-shrink-0">
                             <span className="material-icons">arrow_back</span>
                         </Link>
-                        <h2 className="font-black text-lg truncate uppercase tracking-tight" style={{ color: '#B5A160' }} title={activeSequence.title}>
+                        <h2 className="font-black text-sm uppercase tracking-tight leading-tight" style={{ color: '#B5A160' }} title={activeSequence.title}>
                             {activeSequence.title}
                         </h2>
                     </div>
