@@ -6,8 +6,8 @@ import Condition02_Justificacion from '../components/quality-conditions/Conditio
 import Condition03_Curricular from '../components/quality-conditions/Condition03_Curricular';
 import Condition04_Organizacion from '../components/quality-conditions/Condition04_Organizacion';
 import Condition05_Investigacion from '../components/quality-conditions/Condition05_Investigacion';
-import Condition06_RelacionSector from '../components/quality-conditions/Condition06_RelacionSector';
-import Condition07_Docentes from '../components/quality-conditions/Condition07_Docentes';
+import Condition06_SectorExterno from '../components/quality-conditions/Condition06_SectorExterno';
+import Condition07_Profesores from '../components/quality-conditions/Condition07_Profesores';
 import Condition08_Medios from '../components/quality-conditions/Condition08_Medios';
 import Condition09_Infraestructura from '../components/quality-conditions/Condition09_Infraestructura';
 
@@ -17,8 +17,8 @@ const conditionComponents: { [key: string]: React.FC } = {
     '03': Condition03_Curricular,
     '04': Condition04_Organizacion,
     '05': Condition05_Investigacion,
-    '06': Condition06_RelacionSector,
-    '07': Condition07_Docentes,
+    '06': Condition06_SectorExterno,
+    '07': Condition07_Profesores,
     '08': Condition08_Medios,
     '09': Condition09_Infraestructura,
 };

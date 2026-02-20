@@ -5,8 +5,8 @@ export const conditions = [
     { id: '03', title: 'Curricular', icon: 'BookOpen' },
     { id: '04', title: 'Organización', icon: 'Briefcase' },
     { id: '05', title: 'Investigación', icon: 'Search' },
-    { id: '06', title: 'Sector', icon: 'Handshake' },
-    { id: '07', title: 'Docentes', icon: 'GraduationCap' },
+    { id: '06', title: 'Sector Externo', icon: 'Handshake' },
+    { id: '07', title: 'Profesores', icon: 'GraduationCap' },
     { id: '08', title: 'Medios', icon: 'Monitor' },
     { id: '09', title: 'Infraestructura', icon: 'Building' },
 ];
@@ -48,8 +48,8 @@ export const conditionDetails: {
     },
     '04': { title: 'Organización', description: 'Organización de las actividades académicas.', sections: [] },
     '05': { title: 'Investigación', description: 'Componente de investigación y creación artística.', sections: [] },
-    '06': { title: 'Relación Sector', description: 'Relación con el sector externo.', sections: [] },
-    '07': { title: 'Personal Docente', description: 'Cualificación y dedicación del personal docente.', sections: [] },
+    '06': { title: 'Sector Externo', description: 'Vinculación y proyectos con el sector externo.', sections: [] },
+    '07': { title: 'Profesores', description: 'Cualificación, dedicación y perfil de los profesores.', sections: [] },
     '08': { title: 'Medios Educativos', description: 'Disponibilidad de medios educativos e infraestructura.', sections: [] },
     '09': { title: 'Infraestructura', description: 'Infraestructura física y tecnológica.', sections: [] },
 };

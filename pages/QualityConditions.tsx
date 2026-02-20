@@ -188,7 +188,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>06</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">handshake</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Sector</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Sector Externo</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>07</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">groups</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Docentes</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Profesores</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -237,8 +237,8 @@ const QualityConditions: React.FC = () => {
                         { id: "03", title: "Aspectos Curriculares" },
                         { id: "04", title: "Organización" },
                         { id: "05", title: "Investigación" },
-                        { id: "06", title: "Relación Sector" },
-                        { id: "07", title: "Personal Docente" },
+                        { id: "06", title: "Sector Externo" },
+                        { id: "07", title: "Profesores" },
                         { id: "08", title: "Medios Educativos" },
                         { id: "09", title: "Infraestructura" }
                     ].map((item) => (
