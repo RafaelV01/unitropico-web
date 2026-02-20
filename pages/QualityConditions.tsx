@@ -111,7 +111,7 @@ const QualityConditions: React.FC = () => {
                 <div className="orbit-container hidden lg:block scale-[0.6] lg:scale-[0.65] xl:scale-75 2xl:scale-90 origin-center">
 
                     {/* Center core */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full flex flex-col items-center justify-center z-10 core-shadow overflow-hidden"
+                    <Link to="/" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full flex flex-col items-center justify-center z-10 core-shadow overflow-hidden hover:scale-105 transition-transform duration-300"
                         style={{ backgroundColor: '#ffffff', border: '1px solid #CCDEDC' }}>
                         <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #F0ECDF 100%)', opacity: 0.8 }}></div>
                         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
@@ -119,7 +119,7 @@ const QualityConditions: React.FC = () => {
                             <span className="text-center text-xs font-montserrat font-black tracking-widest" style={{ color: '#00594E' }}>INGENIERÍA EN INTELIGENCIA ARTIFICIAL</span>
                             <div className="mt-4 w-16 h-0.5" style={{ backgroundColor: '#B5A160' }}></div>
                         </div>
-                    </div>
+                    </Link>
 
                     {/* Orbit ring decorations */}
                     <div className="absolute top-1/2 left-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
