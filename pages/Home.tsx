@@ -46,7 +46,7 @@ const Home: React.FC = () => {
 
           {/* Faculty label */}
           <div className="mb-6 hidden lg:block">
-            <p className="font-semibold text-lg tracking-wide font-montserrat mb-2" style={{ color: '#00594E' }}>
+            <p className="font-semibold subtitulo tracking-wide font-montserrat mb-2" style={{ color: '#00594E' }}>
               Facultad de Ingenierías
             </p>
             <div className="h-[3px] w-16 rounded-full" style={{ backgroundColor: '#B5A160' }}></div>
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Description */}
-          <p className="text-sm lg:text-base leading-relaxed mb-8 max-w-sm font-montserrat font-light"
+          <p className="subtitulo leading-relaxed mb-8 max-w-sm"
             style={{ color: '#347B72' }}>
             Fórmate como líder en la revolución tecnológica. Diseña, implementa y gestiona sistemas
             inteligentes que transformarán el futuro de la industria y la sociedad en la Orinoquia y el mundo.
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = '#B5A160'; el.style.color = '#fff'; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = 'transparent'; el.style.color = '#B5A160'; }}
             >
-              <span>Condiciones de Calidad</span>
+              <span className="subtitulo">Condiciones de Calidad</span>
             </Link>
             {/* <Link
               to="/editor"
@@ -113,16 +113,16 @@ const Home: React.FC = () => {
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-6 pt-8" style={{ borderTop: '1px solid #CCDEDC' }}>
             <div className="flex flex-col cursor-default">
-              <span className="font-black text-xl font-montserrat" style={{ color: '#B5A160' }}>9</span>
-              <span className="text-xs uppercase tracking-widest font-bold font-montserrat mt-0.5" style={{ color: '#679C95' }}>Semestres</span>
+              <span className="subtitulo font-black font-montserrat" style={{ color: '#B5A160' }}>9</span>
+              <span className="subtitulo uppercase tracking-widest font-bold font-montserrat mt-0.5" style={{ color: '#679C95' }}>Semestres</span>
             </div>
             <div className="flex flex-col cursor-default">
-              <span className="font-black text-xl font-montserrat" style={{ color: '#B5A160' }}>Presencial</span>
-              <span className="text-xs uppercase tracking-widest font-bold font-montserrat mt-0.5" style={{ color: '#679C95' }}>Modalidad</span>
+              <span className="subtitulo font-black font-montserrat" style={{ color: '#B5A160' }}>Presencial</span>
+              <span className="subtitulo uppercase tracking-widest font-bold font-montserrat mt-0.5" style={{ color: '#679C95' }}>Modalidad</span>
             </div>
             <div className="flex flex-col cursor-default">
-              <span className="font-black text-xl font-montserrat" style={{ color: '#B5A160' }}>Yopal</span>
-              <span className="text-xs uppercase tracking-widest font-bold font-montserrat mt-0.5" style={{ color: '#679C95' }}>Sede</span>
+              <span className="subtitulo font-black font-montserrat" style={{ color: '#B5A160' }}>Yopal</span>
+              <span className="subtitulo uppercase tracking-widest font-bold font-montserrat mt-0.5" style={{ color: '#679C95' }}>Sede</span>
             </div>
           </div>
 
