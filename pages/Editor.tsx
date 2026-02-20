@@ -437,6 +437,7 @@ const Editor: React.FC = () => {
                     onSelectHotspot={setSelectedHotspotId}
                     onAddHotspot={handleAddHotspot}
                     onNavigate={handleSelectContent}
+                    onUpdateContentHtml={handleUpdateContentHtml}
                 />
             }
             rightPanel={

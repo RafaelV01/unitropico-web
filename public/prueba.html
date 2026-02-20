@@ -1,275 +1,203 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relación Denominación</title>
-<link rel="stylesheet" href="../css_presentaciones/unitropico_base.css">
-<style>
-/* ===== NAVBAR IGUAL AL QUE PASASTE ===== */
-.navbar-img {
-  width: 100%;
-  background: #0f5e57;
-  text-align: center;
-}
-.navbar-img img {
-  width: 100%;
-  height: auto;
-  max-height: 110px;
-  object-fit: contain;
-  display: block;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Información General del Programa - Ingeniería en IA</title>
+  <link rel="stylesheet" href="../css_presentaciones/unitropico_base.css">
+  <style>
+    /* ======================== */
+    /* IMAGEN DE FONDO GENERAL  */
+    /* ======================== */
+    body {
+      margin: 0;
+      padding: 0;
+      /* Reemplaza 'ruta/a/tu/imagen.jpg' con la URL de tu imagen de fondo */
+      background-image: url('../img/background-1.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-/* ===== CONTENEDOR GENERAL ===== */
-.section-container {
-  position: relative;
-  min-height: 85vh;
-  background: #f4f4f4;
-  padding: 40px 20px 80px;
-  overflow: hidden;
-}
+    /* Navbar con imagen a todo el ancho */
+    .navbar-img {
+      width: 100%;
+      background: var(--verde-1);
+      text-align: center;
+    }
 
-/* ===== TEXTO SUPERIOR IZQUIERDO ===== */
-.top-left-title {
-  color: #0f5e57;
-  font-weight: 700;
-  font-size: 18px;
-  max-width: 700px;
-  margin-bottom: 20px;
-}
+    .navbar-img img {
+      width: 100%;
+      height: auto;
+      max-height: 110px;
+      object-fit: contain;
+      display: block;
+    }
 
-/* ===== AREA CENTRAL ===== */
-.circle-area {
-  position: relative;
-  margin: 60px auto;
-  width: 520px;
-  height: 520px;
-}
+    /* Contenedor principal con fondo semitransparente para legibilidad */
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 30px;
+      box-shadow: 0 15px 30px rgba(0, 89, 78, 0.2);
+    }
 
-/* ===== ANILLO DORADO ===== */
-.circle-ring {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 28px solid #B5A160;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-}
+    /* Estilo para el título de la sección (fondo verde claro) */
+    .section-header {
+      background-color: var(--verde-5);
+      padding: 10px 20px;
+      border-radius: 30px 30px 30px 30px;
+      margin-bottom: 25px;
+      display: inline-block;
+      width: auto;
+    }
 
-/* ===== CIRCULO BASE ===== */
-.circle {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: #2f7c70;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-weight: 600;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+    /* Caja de la tabla con sombra y bordes redondeados */
+    .table-box {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 89, 78, 0.1);
+      margin-bottom: 2rem;
+      background-color: white;
+    }
 
-/* ===== CIRCULO CENTRAL ===== */
-.circle.center {
-  width: 200px;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  font-size: 18px;
-}
+    /* Estilos de la tabla */
+    .table-box table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-/* ===== POSICIONES ===== */
-.circle.top { top: -40px; left: 50%; transform: translateX(-50%); }
-.circle.right { right: -40px; top: 50%; transform: translateY(-50%); }
-.circle.bottom { bottom: -40px; left: 50%; transform: translateX(-50%); }
-.circle.left { left: -40px; top: 50%; transform: translateY(-50%); }
+    .table-box th {
+      background-color: var(--verde-4);
+      color: var(--verde-1);
+      font-weight: 600;
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 1rem;
+      width: 35%;
+    }
 
-/* ===== BOTONES EXTERNOS ===== */
-.circle.button {
-  cursor: pointer;
-  transition: all .3s ease;
-}
-.circle.button:hover {
-  transform: translateY(-5px) scale(1.05);
-}
-.circle.left.button:hover { transform: translateY(-50%) scale(1.05); }
-.circle.right.button:hover { transform: translateY(-50%) scale(1.05); }
-.circle.top.button:hover { transform: translateX(-50%) scale(1.05); }
-.circle.bottom.button:hover { transform: translateX(-50%) scale(1.05); }
+    .table-box td {
+      background-color: white;
+      color: var(--verde-2);
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--verde-5);
+    }
 
-/* ===== CUADROS IZQUIERDA ===== */
-.text-box {
-  position: absolute;
-  border: 2px solid #0f5e57;
-  border-radius: 14px;
-  padding: 18px 22px;
-  font-weight: 600;
-  color: #B5A160;
-  background: white;
-  display: none; /* Ocultos inicialmente */
-}
+    .table-box tr:last-child td {
+      border-bottom: none;
+    }
 
-.text-box.top {
-  left: 40px;
-  top: 220px;
-}
-
-.text-box.bottom {
-  left: 40px;
-  bottom: 160px;
-}
-
-/* ===== CUADRO DERECHO ===== */
-.stats-box {
-  position: absolute;
-  right: 60px;
-  top: 220px;
-  border: 2px solid #0f5e57;
-  border-radius: 28px;
-  padding: 30px 40px;
-  background: white;
-  color: #B5A160;
-  font-weight: 600;
-  line-height: 1.8;
-  display: none; /* Oculto inicialmente */
-}
-
-.porcentajes {
-  color: #0f5e57;
-}
-
-.stats-box span {
-  font-weight: 800;
-  font-size: 18px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .circle-area {
-    transform: scale(0.85);
-  }
-  /* En responsive, los cuadros pasan a ser relativos para que no se desordenen */
-  .text-box, .stats-box {
-    position: relative;
-    left: auto;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    margin: 20px auto;
-    display: none; /* Siguen ocultos, pero al mostrarse serán bloque */
-    width: fit-content;
-  }
-  .stats-box {
-    margin: 20px auto;
-    text-align: left;
-  }
-}
-</style>
+    /* Espaciado del título superior */
+    .top-left-title {
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar-img">
-  <img src="media/denominacion/navbar.png" alt="Navbar Unitropico">
-</div>
-
-<div class="section-container">
-
-  <!-- Texto superior izquierdo -->
-  <div class="top-left-title">
-    Artículo 2.5.3.2.3.2.2. Relación de la denominación con el título a otorgar,
-    con el nivel de formación, con los contenidos curriculares y con el perfil de egreso
+  <!-- Navbar de imagen -->
+  <div class="navbar-img">
+    <img src="media/denominacion/navbar.png" alt="Navbar Unitropico">
   </div>
 
-  <!-- Cuadros izquierda (ocultos) -->
-  <div class="text-box top" id="cuadroTitulo">
-    Ingeniero(a) en<br>Inteligencia Artificial
+  <div class="container">
+    <!-- Título del artículo con clases del CSS base -->
+    <div class="top-left-title subtitulo text-verde-1">
+      Artículo 2.5.3.2.3.2.2. Denominación del programa – Ficha Técnica
+    </div>
+
+    <!-- Sección con fondo verde claro para el título -->
+    <div class="section-header">
+      <h2 class="titulo text-verde-1" style="margin: 0;">Información General del Programa</h2>
+    </div>
+
+    <!-- Tabla de información -->
+    <div class="table-box">
+      <table>
+        <tbody>
+          <tr>
+            <th>Institución</th>
+            <td>Universidad Internacional del Trópico Americano</td>
+          </tr>
+          <tr>
+            <th>Lugar de desarrollo del programa</th>
+            <td>Yopal - Casanare</td>
+          </tr>
+          <tr>
+            <th>Nombre del programa</th>
+            <td>Ingeniería en Inteligencia Artificial</td>
+          </tr>
+          <tr>
+            <th>Título que otorga</th>
+            <td>Ingeniero(a) en Inteligencia Artificial</td>
+          </tr>
+          <tr>
+            <th>Norma interna de creación</th>
+            <td>Acuerdo CS No. 090 de 2025</td>
+          </tr>
+          <tr>
+            <th>Programa adscrito a</th>
+            <td>Facultad de Ingenierías</td>
+          </tr>
+          <tr>
+            <th>Nivel académico</th>
+            <td>Pregrado</td>
+          </tr>
+          <tr>
+            <th>Modalidad</th>
+            <td>Presencial</td>
+          </tr>
+          <tr>
+            <th>Número de créditos</th>
+            <td>148 créditos</td>
+          </tr>
+          <tr>
+            <th>Valor de la matrícula al iniciar el programa</th>
+            <td>1,5 S.M.L.M.V</td>
+          </tr>
+          <tr>
+            <th>Duración del programa</th>
+            <td>Nueve (9) semestres</td>
+          </tr>
+          <tr>
+            <th>Registro calificado único</th>
+            <td>No</td>
+          </tr>
+          <tr>
+            <th>Periocidad de admisión al programa</th>
+            <td>Semestral</td>
+          </tr>
+          <tr>
+            <th>No. de estudiantes primer periodo</th>
+            <td>60 estudiantes</td>
+          </tr>
+          <tr>
+            <th>Campo amplio</th>
+            <td>(06) Tecnologías de la información y la comunicación (UNESCO, 2016)</td>
+          </tr>
+          <tr>
+            <th>Campo específico</th>
+            <td>(061) Tecnologías de la información y la comunicación</td>
+          </tr>
+          <tr>
+            <th>Campo detallado</th>
+            <td>(0618) Programas interdisciplinares en TIC</td>
+          </tr>
+          <tr>
+            <th>Porcentaje de inclusión tecnológica</th>
+            <td>60%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-  <div class="text-box bottom" id="cuadroNivel">
-    Pregrado
-  </div>
-
-  <!-- Cuadro derecho (oculto) -->
-  <div class="stats-box" id="cuadroContenidos">
-    Formación Profesional <span class="porcentajes">69,5%</span><br>
-    Praxis Investigativa <span class="porcentajes">9,5%</span><br>
-    Formación Integral <span class="porcentajes">12,2%</span><br>
-    Libre Elección <span class="porcentajes">8,8%</span>
-  </div>
-
-  <!-- Area circular -->
-  <div class="circle-area">
-    <div class="circle-ring"></div>
-    <div class="circle center">
-      Ingeniería en<br>Inteligencia Artificial
-    </div>
-    <div class="circle top button" id="btnTitulo">
-      Título que<br>otorga
-    </div>
-    <div class="circle right button" id="btnContenidos">
-      Contenidos<br>Curriculares
-    </div>
-    <div class="circle bottom button" id="btnPerfil">
-      Perfil del<br>Egreso
-    </div>
-    <div class="circle left button" id="btnNivel">
-      Nivel de<br>formación
-    </div>
-  </div>
-
-</div>
-
-<script>
-// Función para alternar visibilidad
-function toggleElement(element) {
-  if (element.style.display === 'none' || getComputedStyle(element).display === 'none') {
-    // Si está oculto, lo mostramos
-    element.style.display = 'block';
-  } else {
-    // Si está visible, lo ocultamos
-    element.style.display = 'none';
-  }
-}
-
-// Obtener elementos
-const btnTitulo = document.getElementById('btnTitulo');
-const btnNivel = document.getElementById('btnNivel');
-const btnContenidos = document.getElementById('btnContenidos');
-const cuadroTitulo = document.getElementById('cuadroTitulo');
-const cuadroNivel = document.getElementById('cuadroNivel');
-const cuadroContenidos = document.getElementById('cuadroContenidos');
-
-// Asignar eventos
-btnTitulo.addEventListener('click', function(e) {
-  e.stopPropagation();
-  toggleElement(cuadroTitulo);
-});
-
-btnNivel.addEventListener('click', function(e) {
-  e.stopPropagation();
-  toggleElement(cuadroNivel);
-});
-
-btnContenidos.addEventListener('click', function(e) {
-  e.stopPropagation();
-  toggleElement(cuadroContenidos);
-});
-
-// El botón de perfil no hace nada (por ahora)
-btnPerfil.addEventListener('click', function(e) {
-  e.stopPropagation();
-  // No hay cuadro asociado
-});
-
-// Opcional: Si se hace clic en cualquier otra parte, no pasa nada
-</script>
 
 </body>
+
 </html>

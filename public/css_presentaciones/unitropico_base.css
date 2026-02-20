@@ -1,253 +1,146 @@
-/* ============================================
-   Directrices de estilo institucional Unitrópico
-   Tipografía: Montserrat
-   Paleta cromática: Verdes y Bronces
-   ============================================ */
+/* Importar fuente Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
-/* Importar Montserrat desde Google Fonts (todos los pesos) */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-
-/* Variables de color */
+/* =========================
+   VARIABLES DE COLOR
+========================= */
 :root {
-  /* Verdes institucionales */
-  --verde-oscuro: #00594E;
-  --verde-medio: #347B72;
-  --verde-claro: #679C95;
-  --verde-muy-claro: #9ABDB8;
-  --verde-palido: #CCDEDC;
+  /* Verde institucional */
+  --verde-1: #00594E;
+  --verde-2: #347B72;
+  --verde-3: #679C95;
+  --verde-4: #9ABDB8;
+  --verde-5: #CCDEDC;
 
-  /* Bronces institucionales */
-  --bronce-oscuro: #B5A160;
-  --bronce-medio: #C4B47F;
-  --bronce-claro: #D3C79F;
-  --bronce-muy-claro: #E1D9BF;
-  --bronce-palido: #F0ECDF;
+  /* Bronce institucional */
+  --bronce-1: #B5A160;
+  --bronce-2: #C4B47F;
+  --bronce-3: #D3C79F;
+  --bronce-4: #E1D9BF;
+  --bronce-5: #F0ECDF;
 }
 
-/* Reset básico y estilos de cuerpo */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* =========================
+   TIPOGRAFÍA
+========================= */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f5f7f6;  /* gris muy suave de fondo, opcional */
-  color: #333;
-  line-height: 1.6;
-  font-size: 16px; /* base para rem */
 }
 
-/* ============================================
-   Jerarquía tipográfica (en rem)
-   ============================================ */
-
-/* Títulos principales (h1, h2, h3, etc.) */
-h1, .h1 {
-  font-size: 2.5rem;      /* 40px */
-  font-weight: 800;       /* ExtraBold */
-  line-height: 1.2;
-  color: var(--verde-oscuro);
-  margin-bottom: 1rem;
-}
-
-h2, .h2 {
-  font-size: 2rem;        /* 32px */
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--verde-oscuro);
-  margin-bottom: 0.75rem;
-}
-
-h3, .h3 {
-  font-size: 1.75rem;     /* 28px */
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--verde-medio);
-  margin-bottom: 0.5rem;
-}
-
-h4, .h4 {
-  font-size: 1.5rem;      /* 24px */
-  font-weight: 600;
-  color: var(--verde-medio);
-  margin-bottom: 0.5rem;
-}
-
-h5, .h5 {
-  font-size: 1.25rem;     /* 20px */
-  font-weight: 500;
-  color: var(--verde-claro);
-  margin-bottom: 0.25rem;
-}
-
-h6, .h6 {
-  font-size: 1rem;        /* 16px */
-  font-weight: 500;
-  color: var(--verde-claro);
-  margin-bottom: 0.25rem;
-}
-
-/* Párrafos y texto base */
-p, .text-body {
-  font-size: 1rem;        /* 16px */
+/* Títulos */
+.titulo {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  /* 24pt equivalente */
 }
 
-.text-small {
-  font-size: 0.875rem;    /* 14px */
-  font-weight: 300;
-}
-
-.text-large {
-  font-size: 1.125rem;    /* 18px */
-  font-weight: 400;
-}
-
-/* ============================================
-   Clases específicas para títulos de sección (como en la página actual)
-   ============================================ */
-.section-title {
-  text-align: center;
-  font-size: 2rem;         /* 32px */
-  font-weight: 700;
-  color: var(--verde-oscuro);
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.section-title::after {
-  content: '';
-  width: 90px;
-  height: 4px;
-  background: var(--bronce-oscuro);
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.sub-title {
-  font-size: 1.5rem;       /* 24px */
+/* Subtítulos */
+.subtitulo {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  color: var(--verde-oscuro);
-  border-left: 5px solid var(--verde-oscuro);
-  padding-left: 12px;
-  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  /* 18pt equivalente */
 }
 
-/* ============================================
-   Componentes comunes (tablas, tarjetas, botones)
-   ============================================ */
-
-/* Contenedor principal (opcional, puede usarse en páginas) */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px 80px;  /* padding horizontal por defecto, se puede ajustar por página */
-}
-
-/* Tablas con diseño limpio */
-.table-box {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;       /* ~14px */
-}
-
-th, td {
-  padding: 14px 20px;
-  border-bottom: 1px solid #eee;
-  text-align: left;
-}
-
-th {
-  width: 35%;
-  background-color: var(--verde-palido);
-  color: var(--verde-oscuro);
-  font-weight: 600;
-}
-
-tr:hover {
-  background-color: #fafafa;
-}
-
-/* Tarjetas (cards) */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.card h4 {
-  color: var(--verde-oscuro);
-  margin-bottom: 0.5rem;
-}
-
-.card p {
+/* Párrafos */
+.parrafo {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  margin: 0;
-}
-
-/* Botón institucional */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  color: var(--bronce-oscuro);
-  font-weight: 600;
-  cursor: pointer;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  /* 12pt equivalente */
 }
 
-.btn:hover {
-  background-color: var(--bronce-oscuro);
+/* =========================
+   CLASES DE COLOR
+========================= */
+
+/* Texto */
+.text-verde-1 {
+  color: var(--verde-1);
+}
+
+.text-verde-2 {
+  color: var(--verde-2);
+}
+
+.text-verde-3 {
+  color: var(--verde-3);
+}
+
+.text-verde-4 {
+  color: var(--verde-4);
+}
+
+.text-verde-5 {
+  color: var(--verde-5);
+}
+
+.text-bronce-1 {
+  color: var(--bronce-1);
+}
+
+.text-bronce-2 {
+  color: var(--bronce-2);
+}
+
+.text-bronce-3 {
+  color: var(--bronce-3);
+}
+
+.text-bronce-4 {
+  color: var(--bronce-4);
+}
+
+.text-bronce-5 {
+  color: var(--bronce-5);
+}
+
+.text-black {
+  color: black;
+}
+
+.text-white {
   color: white;
-  text-decoration: none;
 }
 
-/* Utilidades de color */
-.text-verde-oscuro { color: var(--verde-oscuro); }
-.text-verde-medio { color: var(--verde-medio); }
-.text-verde-claro { color: var(--verde-claro); }
-.text-bronce-oscuro { color: var(--bronce-oscuro); }
-.bg-verde-palido { background-color: var(--verde-palido); }
-
-/* Animación de entrada (opcional) */
-.fade-in {
-  animation: fadeIn 0.8s ease-in-out;
+/* Fondos */
+.bg-verde-1 {
+  background-color: var(--verde-1);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.bg-verde-2 {
+  background-color: var(--verde-2);
+}
+
+.bg-verde-3 {
+  background-color: var(--verde-3);
+}
+
+.bg-verde-4 {
+  background-color: var(--verde-4);
+}
+
+.bg-verde-5 {
+  background-color: var(--verde-5);
+}
+
+.bg-bronce-1 {
+  background-color: var(--bronce-1);
+}
+
+.bg-bronce-2 {
+  background-color: var(--bronce-2);
+}
+
+.bg-bronce-3 {
+  background-color: var(--bronce-3);
+}
+
+.bg-bronce-4 {
+  background-color: var(--bronce-4);
+}
+
+.bg-bronce-5 {
+  background-color: var(--bronce-5);
 }
