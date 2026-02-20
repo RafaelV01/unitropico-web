@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { conditions } from '../data/conditions';
 import './QualityConditions.css';
 
 const QualityConditions: React.FC = () => {
@@ -38,6 +39,8 @@ const QualityConditions: React.FC = () => {
             navbar.style.transition = '';
         };
     }, []);
+
+    const getTitle = (id: string) => conditions.find(c => c.id === id)?.title || '';
 
     return (
         <main ref={mainRef} className="fixed inset-0 z-40 h-screen w-full overflow-y-scroll snap-y snap-mandatory light-grid-bg font-montserrat scroll-smooth" style={{ color: '#00594E' }}>
@@ -133,7 +136,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>01</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">description</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Denominación</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('01')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -144,7 +147,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>02</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">lightbulb</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Justificación</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('02')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -155,7 +158,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>03</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">school</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Aspectos Curriculares</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('03')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -166,7 +169,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>04</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">calendar_month</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Organización</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('04')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -177,7 +180,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>05</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">biotech</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Investigación</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('05')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -188,7 +191,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>06</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">handshake</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Sector Externo</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('06')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -199,7 +202,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>07</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">groups</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Profesores</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('07')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -210,7 +213,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>08</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">computer</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Medios</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('08')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -221,7 +224,7 @@ const QualityConditions: React.FC = () => {
                             <div className="absolute -top-6 -left-6 text-white text-3xl font-black w-14 h-14 flex items-center justify-center rounded-full font-montserrat z-20 shadow-md" style={{ backgroundColor: '#B5A160', border: '2px solid #fff' }}>09</div>
                             <div className="flex flex-col items-center text-center">
                                 <span className="material-symbols-outlined text-3xl mb-2 text-[#00594E] group-hover:text-white group-hover:scale-110 transition-transform">apartment</span>
-                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">Infraestructura</h3>
+                                <h3 className="text-xl font-montserrat font-black text-gray-800 group-hover:text-white">{getTitle('09')}</h3>
                                 <div className="h-0.5 w-8 group-hover:w-full transition-all duration-500 mt-2" style={{ backgroundColor: '#CCDEDC' }}></div>
                             </div>
                         </div>
@@ -231,17 +234,7 @@ const QualityConditions: React.FC = () => {
 
                 {/* Mobile grid */}
                 <div className="lg:hidden w-full px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 pb-32">
-                    {[
-                        { id: "01", title: "Denominación" },
-                        { id: "02", title: "Justificación" },
-                        { id: "03", title: "Aspectos Curriculares" },
-                        { id: "04", title: "Organización" },
-                        { id: "05", title: "Investigación" },
-                        { id: "06", title: "Sector Externo" },
-                        { id: "07", title: "Profesores" },
-                        { id: "08", title: "Medios Educativos" },
-                        { id: "09", title: "Infraestructura" }
-                    ].map((item) => (
+                    {conditions.map((item) => (
                         <Link key={item.id} className="block p-6 rounded-xl transition-all duration-300" style={{ backgroundColor: '#ffffff', border: '1px solid #CCDEDC', boxShadow: '0 2px 12px rgba(0,89,78,0.08)' }} to={`/quality-conditions/${item.id}`}>
                             <div className="flex items-center gap-4">
                                 <span className="font-montserrat font-black text-4xl" style={{ color: '#B5A160' }}>{item.id}</span>

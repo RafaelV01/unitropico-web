@@ -1,14 +1,14 @@
 
 export const conditions = [
-    { id: '01', title: 'Denominación', icon: 'FileText' },
-    { id: '02', title: 'Justificación', icon: 'Target' },
-    { id: '03', title: 'Curricular', icon: 'BookOpen' },
-    { id: '04', title: 'Organización', icon: 'Briefcase' },
-    { id: '05', title: 'Investigación', icon: 'Search' },
-    { id: '06', title: 'Sector Externo', icon: 'Handshake' },
+    { id: '01', title: 'Denominación del programa', icon: 'FileText' },
+    { id: '02', title: 'Justificación del programa', icon: 'Target' },
+    { id: '03', title: 'Aspectos curriculares', icon: 'BookOpen' },
+    { id: '04', title: 'Organización de actividades académicas', icon: 'Briefcase' },
+    { id: '05', title: 'Investigación, innovación y/o creación artística y cultural', icon: 'Search' },
+    { id: '06', title: 'Relación con el sector externo', icon: 'Handshake' },
     { id: '07', title: 'Profesores', icon: 'GraduationCap' },
-    { id: '08', title: 'Medios', icon: 'Monitor' },
-    { id: '09', title: 'Infraestructura', icon: 'Building' },
+    { id: '08', title: 'Medios educativos', icon: 'Monitor' },
+    { id: '09', title: 'Infraestructura física y tecnológica', icon: 'Building' },
 ];
 
 export const conditionDetails: {

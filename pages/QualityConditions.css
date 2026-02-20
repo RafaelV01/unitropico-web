@@ -15,23 +15,23 @@
 }
 
 .pos-1 {
-    transform: translate(-50%, -50%) rotate(-90deg) translate(350px) rotate(90deg);
+    transform: translate(-50%, -50%) rotate(-90deg) translate(320px) rotate(90deg);
 }
 
 .pos-2 {
-    transform: translate(-50%, -50%) rotate(-50deg) translate(350px) rotate(50deg);
+    transform: translate(-50%, -50%) rotate(-45deg) translate(390px) rotate(45deg);
 }
 
 .pos-3 {
-    transform: translate(-50%, -50%) rotate(-10deg) translate(350px) rotate(10deg);
+    transform: translate(-50%, -50%) rotate(-10deg) translate(400px) rotate(10deg);
 }
 
 .pos-4 {
-    transform: translate(-50%, -50%) rotate(30deg) translate(350px) rotate(-30deg);
+    transform: translate(-50%, -50%) rotate(20deg) translate(400px) rotate(-20deg);
 }
 
 .pos-5 {
-    transform: translate(-50%, -50%) rotate(68deg) translate(350px) rotate(-68deg);
+    transform: translate(-50%, -40%) rotate(68deg) translate(320px) rotate(-68deg);
 }
 
 .pos-6 {
@@ -39,15 +39,15 @@
 }
 
 .pos-7 {
-    transform: translate(-50%, -50%) rotate(150deg) translate(350px) rotate(-150deg);
+    transform: translate(-50%, -50%) rotate(158deg) translate(400px) rotate(-158deg);
 }
 
 .pos-8 {
-    transform: translate(-50%, -50%) rotate(190deg) translate(350px) rotate(-190deg);
+    transform: translate(-50%, -50%) rotate(190deg) translate(400px) rotate(-190deg);
 }
 
 .pos-9 {
-    transform: translate(-50%, -50%) rotate(230deg) translate(350px) rotate(-230deg);
+    transform: translate(-50%, -50%) rotate(225deg) translate(390px) rotate(-225deg);
 }
 
 .orbit-item:hover {
