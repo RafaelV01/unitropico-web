@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Información General del Programa - Ingeniería en IA</title>
+  <title>Perfil de Egreso - Ingeniería en IA</title>
+  <!-- Fuente Montserrat y CSS base -->
   <link rel="stylesheet" href="../css_presentaciones/unitropico_base.css">
   <style>
-    /* ======================== */
-    /* IMAGEN DE FONDO GENERAL  */
-    /* ======================== */
-    body {
+    /* =========================
+       ESTILOS ADICIONALES
+    ========================= */
+    html, body {
+      height: 100%;
       margin: 0;
-      padding: 0;
-      /* Reemplaza 'ruta/a/tu/imagen.jpg' con la URL de tu imagen de fondo */
-      background-image: url('../img/background-1.jpg');
+      overflow-x: hidden;
+      /* Imagen de fondo general */
+      background: url("../img/background1.jpg") no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* Navbar con imagen a todo el ancho */
+    /* Navbar */
     .navbar-img {
       width: 100%;
       background: var(--verde-1);
       text-align: center;
     }
-
     .navbar-img img {
       width: 100%;
       height: auto;
@@ -41,163 +39,154 @@
       max-width: 1100px;
       margin: 30px auto;
       padding: 25px;
+      background-color: rgba(255, 255, 255, 0.85);
       border-radius: 30px;
       box-shadow: 0 15px 30px rgba(0, 89, 78, 0.2);
     }
 
-    /* Estilo para el título de la sección (fondo verde claro) */
+    /* Estilo para el título del artículo */
+    .top-left-title {
+      margin-bottom: 20px;
+    }
+
+    /* Encabezado de sección (como etiqueta) */
     .section-header {
       background-color: var(--verde-5);
       padding: 10px 20px;
-      border-radius: 30px 30px 30px 30px;
+      border-radius: 30px;
       margin-bottom: 25px;
       display: inline-block;
       width: auto;
     }
 
-    /* Caja de la tabla con sombra y bordes redondeados */
-    .table-box {
+    /* Tarjeta de perfil */
+    .perfil-content {
+      background: white;
       border-radius: 20px;
-      overflow: hidden;
+      padding: 2rem;
       box-shadow: 0 8px 20px rgba(0, 89, 78, 0.1);
-      margin-bottom: 2rem;
-      background-color: white;
+      margin-top: 0.5rem;
     }
 
-    /* Estilos de la tabla */
-    .table-box table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: 'Montserrat', sans-serif;
+    .perfil-content p {
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+      color: var(--verde-2);
+      font-weight: 500;
     }
 
-    .table-box th {
-      background-color: var(--verde-4);
+    .perfil-content strong {
       color: var(--verde-1);
       font-weight: 600;
-      padding: 14px 20px;
-      text-align: left;
-      font-size: 1rem;
-      width: 35%;
     }
 
-    .table-box td {
-      background-color: white;
-      color: var(--verde-2);
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--verde-5);
+    /* Badges para sectores estratégicos */
+    .sectores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      justify-content: center;
     }
 
-    .table-box tr:last-child td {
-      border-bottom: none;
+    .sector-badge {
+      background: var(--verde-5);
+      color: var(--verde-1);
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--verde-4);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
     }
 
-    /* Espaciado del título superior */
-    .top-left-title {
-      margin-bottom: 15px;
+    .sector-badge:hover {
+      transform: scale(1.05);
+      background: var(--verde-4);
+    }
+
+    /* Vigilada MinEducación (estilo inferior izquierdo) */
+    .vigilada {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--bronce-1);
+      color: var(--verde-1);
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        margin: 15px;
+        padding: 15px;
+      }
+      .perfil-content {
+        padding: 1.5rem;
+      }
+      .sectores {
+        gap: 0.5rem;
+      }
+      .sector-badge {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
-
 <body>
-
   <!-- Navbar de imagen -->
   <div class="navbar-img">
     <img src="media/denominacion/navbar.png" alt="Navbar Unitropico">
   </div>
 
   <div class="container">
-    <!-- Título del artículo con clases del CSS base -->
+    <!-- Título del artículo -->
     <div class="top-left-title subtitulo text-verde-1">
-      Artículo 2.5.3.2.3.2.2. Denominación del programa – Ficha Técnica
+      Artículo 2.5.3.2.3.2.2. Relación de la denominación con el título a otorgar, con el nivel de formación, con los contenidos curriculares y con el perfil de egreso
     </div>
 
-    <!-- Sección con fondo verde claro para el título -->
+    <!-- Encabezado "Perfil de Egreso" con fondo verde claro -->
     <div class="section-header">
-      <h2 class="titulo text-verde-1" style="margin: 0;">Información General del Programa</h2>
+      <h2 class="titulo text-verde-1" style="margin: 0;">Perfil de Egreso</h2>
     </div>
 
-    <!-- Tabla de información -->
-    <div class="table-box">
-      <table>
-        <tbody>
-          <tr>
-            <th>Institución</th>
-            <td>Universidad Internacional del Trópico Americano</td>
-          </tr>
-          <tr>
-            <th>Lugar de desarrollo del programa</th>
-            <td>Yopal - Casanare</td>
-          </tr>
-          <tr>
-            <th>Nombre del programa</th>
-            <td>Ingeniería en Inteligencia Artificial</td>
-          </tr>
-          <tr>
-            <th>Título que otorga</th>
-            <td>Ingeniero(a) en Inteligencia Artificial</td>
-          </tr>
-          <tr>
-            <th>Norma interna de creación</th>
-            <td>Acuerdo CS No. 090 de 2025</td>
-          </tr>
-          <tr>
-            <th>Programa adscrito a</th>
-            <td>Facultad de Ingenierías</td>
-          </tr>
-          <tr>
-            <th>Nivel académico</th>
-            <td>Pregrado</td>
-          </tr>
-          <tr>
-            <th>Modalidad</th>
-            <td>Presencial</td>
-          </tr>
-          <tr>
-            <th>Número de créditos</th>
-            <td>148 créditos</td>
-          </tr>
-          <tr>
-            <th>Valor de la matrícula al iniciar el programa</th>
-            <td>1,5 S.M.L.M.V</td>
-          </tr>
-          <tr>
-            <th>Duración del programa</th>
-            <td>Nueve (9) semestres</td>
-          </tr>
-          <tr>
-            <th>Registro calificado único</th>
-            <td>No</td>
-          </tr>
-          <tr>
-            <th>Periocidad de admisión al programa</th>
-            <td>Semestral</td>
-          </tr>
-          <tr>
-            <th>No. de estudiantes primer periodo</th>
-            <td>60 estudiantes</td>
-          </tr>
-          <tr>
-            <th>Campo amplio</th>
-            <td>(06) Tecnologías de la información y la comunicación (UNESCO, 2016)</td>
-          </tr>
-          <tr>
-            <th>Campo específico</th>
-            <td>(061) Tecnologías de la información y la comunicación</td>
-          </tr>
-          <tr>
-            <th>Campo detallado</th>
-            <td>(0618) Programas interdisciplinares en TIC</td>
-          </tr>
-          <tr>
-            <th>Porcentaje de inclusión tecnológica</th>
-            <td>60%</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Tarjeta de contenido -->
+    <div class="perfil-content">
+      <p>
+        El <strong>Ingeniero en Inteligencia Artificial</strong> es un profesional con sólida <strong>formación científica, pensamiento crítico e iniciativa innovadora.</strong> Examina los problemas sociales y ambientales desde una perspectiva holística, solidaria y bioética.
+      </p>
+      <p>
+        Domina los fundamentos lógicos, matemáticos, estadísticos, físicos e informáticos para formular y liderar <strong>proyectos de investigación, desarrollo tecnológico e innovación</strong> orientados a las demandas del sector productivo y de servicios.
+      </p>
+      <p>
+        Capaz de diseñar soluciones inteligentes que incluyen el <strong>diseño experimental</strong>, la <strong>selección de hardware y arquitecturas IoT</strong>, la <strong>protección de datos</strong>, y el <strong>desarrollo, entrenamiento y despliegue de modelos de Machine Learning y Deep Learning</strong>.
+      </p>
+      <p>
+        Se desempeña con responsabilidad y ética en entornos interdisciplinarios, integrando tecnologías de vanguardia en ámbitos como la <strong>sostenibilidad ambiental</strong> y las <strong>ciudades inteligentes</strong>.
+      </p>
+      <p>
+        Genera impacto en sectores estratégicos:
+      </p>
+      <div class="sectores">
+        <span class="sector-badge">Industria</span>
+        <span class="sector-badge">Agricultura</span>
+        <span class="sector-badge">Energía</span>
+        <span class="sector-badge">Educación</span>
+        <span class="sector-badge">Salud</span>
+      </div>
     </div>
   </div>
 
-</body>
+  <!-- Badge Vigilada MinEducación (fijo en la pantalla) -->
+  <!-- <div class="vigilada">– Vigilada MinEducación –</div> -->
 
+</body>
 </html>
