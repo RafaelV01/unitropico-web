@@ -42,6 +42,12 @@ const QualityConditions: React.FC = () => {
     return (
         <main ref={mainRef} className="fixed inset-0 z-40 h-screen w-full overflow-y-scroll snap-y snap-mandatory light-grid-bg font-montserrat scroll-smooth" style={{ color: '#00594E' }}>
 
+            {/* ── Back Button (fixed, top-left) ── */}
+            <Link to="/" className="fixed top-6 left-8 z-50 flex items-center gap-2 hover:translate-x-[-4px] transition-transform duration-200">
+                <span className="material-symbols-outlined text-verde-1 !text-2xl font-bold">arrow_back</span>
+                <span className="subtitulo text-verde-1 !text-lg tracking-wide uppercase">Volver</span>
+            </Link>
+
             {/* ── Logo top-right (fixed, always visible) ── */}
             <div className="fixed top-4 right-6 z-50 pointer-events-none">
                 <img
@@ -80,13 +86,13 @@ const QualityConditions: React.FC = () => {
                         CONDICIONES DE <span style={{ color: '#B5A160' }}>CALIDAD</span>
                     </h1>
                     <div className="mx-auto w-24 h-[3px] rounded-full mb-4" style={{ backgroundColor: '#B5A160' }}></div>
-                    <p className="max-w-xl mx-auto font-medium tracking-wide text-sm font-montserrat pt-4 mt-2" style={{ color: '#679C95', borderTop: '1px solid #CCDEDC' }}>
+                    <p className="max-w-xl mx-auto font-medium tracking-wide subtitulo font-montserrat pt-4 mt-2" style={{ color: '#679C95', borderTop: '1px solid #CCDEDC' }}>
                         NAVEGUE EL COMPÁS ESTRATÉGICO DEL PROGRAMA DE INGENIERÍA EN INTELIGENCIA ARTIFICIAL
                     </p>
 
                     <div className="mt-8 animate-bounce" style={{ color: '#9ABDB8' }}>
                         <span className="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
-                        <p className="text-[10px] tracking-widest uppercase font-bold font-montserrat">Descubre Más</p>
+                        <p className="tracking-widest uppercase font-bold font-montserrat">Descubre Más</p>
                     </div>
                 </div>
 
